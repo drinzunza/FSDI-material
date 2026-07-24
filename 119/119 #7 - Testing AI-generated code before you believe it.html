@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testing AI-Generated Code Before You Believe It — FSDI 119</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Running is only the first test.</li><li>AI code can be plausible and still wrong.</li><li>Opening question: what AI feature has not been tested beyond &lsquo;it runs&rsquo;?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 119 &middot; Capstone: Development Phase 1</div>
+    <h1>Testing AI-generated code <span class="accent">before you believe it</span></h1>
+    <p class="sub">Generated code often runs before it is correct. Your job is to prove it handles data, errors, and user behavior.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Bugs appear after editing, deleting, refreshing, or bad input.</li><li>Manual checklists protect the final demo.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>&ldquo;It runs&rdquo; is not &ldquo;it works&rdquo;</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">A page that loads is treated as <strong>feature success.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Only the <strong>perfect input path</strong> is tested.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh"><strong>Refresh and restart</strong> behavior are ignored.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Use the browser <strong>like a user</strong>, not only like a developer. <span class="accent">Tests protect the demo.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Persistence: refresh the page, restart the server, check migrations.</li><li>Edge cases come from real user behavior.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five tests before you believe it</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">It runs</h3><p>Server starts, page loads, no console errors.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Real scenario</h3><p>Can a user finish the task?</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Bad input</h3><p>Empty, invalid, extreme values.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Persistence</h3><p>Data survives refresh and server restart.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Edge cases</h3><p>Duplicates, long text, injection attempts.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Deleting and refreshing are easy tests students skip.</li><li>A feature is not done until the main variants work.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: a record feature</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic test</div>
+      <div class="ch prod">Product test</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Add a record and see it in the list.</div>
+      <div class="cell">Edit, delete, refresh, filter, and invalid form input.</div>
+      <div class="cell">The checklist <strong>catches a bug before demo day.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">A checklist turns <strong>vague confidence</strong> into <span class="accent">evidence.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>HTML in input: check escaping &mdash; a classic web bug.</li><li>External APIs must be tested for failure, not just success.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Edge cases come from real behavior</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Zero-quantity items, duplicate slugs, huge prices.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Overlapping slots, past dates, time zones.</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">Empty posts, very long text, HTML in input.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">API-dependent pages must <strong>test failure</strong> &mdash; not just <span class="accent">success.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI brainstorms tests well; you run them.</li><li>Ask for &lsquo;ways this could fail&rsquo; before demo day.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Don&rsquo;t let AI grade its own work</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>generate manual test cases</strong> for the feature it wrote</li>
+            <li>Ask for <strong>edge cases</strong> by data type and user behavior</li>
+            <li>Don&rsquo;t let AI mark its own work complete <strong>without your tests</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Ask AI</h3>
+            <p style="margin-top:1vh">&ldquo;What are the <strong>ways this could fail</strong> before the demo?&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Turn one embarrassing input into a manual test.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What does this feature assume is always true?</div>
+      <div class="prompt"><span class="q">2</span> What input would embarrass the app during the demo?</div>
+      <div class="prompt"><span class="q">3</span> What should happen after a refresh?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the feature you will test and one edge case.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Write a five-step test checklist</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Pick <strong>one AI-generated feature.</strong></li>
+          <li>Write a <strong>five-step manual test checklist.</strong></li>
+          <li>Run it and log at least <strong>one fix or confirmation.</strong></li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#9989;</span><span class="lbl">Five-step manual test checklist</span><span class="path">../shared/images/119-test-checklist.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: plausible is not proven; the checklist is the evidence.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Plausible is not <span class="accent">proven.</span></h1>
+    <p class="sub">It runs &middot; Real scenario &middot; Bad input &middot; Persistence &middot; Edge cases.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 119 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.7</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

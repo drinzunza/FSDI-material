@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Django Templates, DRF + React, or External APIs? — FSDI 119</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Students ask which stack is best; the better question is what the app needs.</li><li>Choosing the simpler stack is often the professional decision.</li><li>Opening question: which page truly needs rich interactivity?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 119 &middot; Capstone: Development Phase 1</div>
+    <h1>Django templates, DRF + React, <span class="accent">or external APIs?</span></h1>
+    <p class="sub">The stack choice is a product decision. It changes interactivity, complexity, deployment, and demo risk.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>A separate API pays off when something else consumes it.</li><li>Two deployments double the demo risk.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Picking React because it sounds professional</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Choosing a stack because it <strong>sounds professional.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">A simple form site gets a <strong>full SPA + API</strong> it doesn&rsquo;t need.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Two codebases to <strong>debug and deploy</strong> instead of one.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Stack complexity should <span class="accent">buy something</span>: interactivity, reuse, or a mobile client.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Interactivity: carts and calendars may justify React.</li><li>API consumers: a mobile app or partner justifies DRF.</li><li>Sessions are simpler than JWT if there is no separate client.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five questions before you choose</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Source of truth</h3><p>Where the real record lives.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Interactivity need</h3><p>Which pages must feel instant?</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Accounts &amp; permissions</h3><p>Sessions or tokens &mdash; who owns what?</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">API consumers</h3><p>Does anything else need the data?</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Query complexity</h3><p>Filters, relationships, reports.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Templates can ship a complete product.</li><li>Hybrid is legitimate: templates + a little JS, or React for one page.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Let the need pick the stack</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Django templates render the catalog.</div>
+      <div class="cell">Add DRF + React only where interactivity pays for it.</div>
+      <div class="cell">Stack choice <strong>matches the demo story.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Choosing the <strong>simpler stack</strong> is often the <span class="accent">professional</span> decision.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Ask students to name the ONE page that needs interactivity most.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Match the stack to the product</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Templates can ship a full store; <strong>React makes the cart feel instant.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Calendar interactivity may <strong>justify React.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">Feeds and forms work fine <strong>server-rendered.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Not every app needs a SPA. Not every SPA needs every page to be React.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>A decision record: choice, alternatives, accepted tradeoff.</li><li>Mixed persistence/state patterns are a common AI mess.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Ask for a decision record, not code first</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>compare stacks</strong> for your exact user story</li>
+            <li>Ask for a <strong>decision record</strong>, not code first</li>
+            <li>Watch for generated code that <strong>mixes patterns</strong> (fetch in templates, duplicate state)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Know the answer</h3>
+            <p style="margin-top:1vh">What happens on <strong>refresh, back button,</strong> and <strong>slow network</strong> in your chosen stack?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Ask one templates-stack student and one React student to explain their choice.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What is your source of truth?</div>
+      <div class="prompt"><span class="q">2</span> Which page truly needs rich interactivity?</div>
+      <div class="prompt"><span class="q">3</span> What breaks if the API and the UI disagree on data shape?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the tradeoff you accept.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Write a stack decision record</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Name the <strong>chosen stack</strong>, the <strong>rejected alternatives,</strong> and the <strong>accepted tradeoff.</strong></li>
+          <li>Add <strong>one manual test</strong>: refresh, back button, slow network.</li>
+          <li>Put it in the <strong>project document.</strong></li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128736;</span><span class="lbl">Templates vs DRF+React decision map</span><span class="path">../shared/images/119-stack-decision.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: the need picks the stack; complexity must buy something.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Let the <span class="accent">need</span> pick the stack &mdash; not the other way around.</h1>
+    <p class="sub">Source of truth &middot; Interactivity &middot; Accounts &middot; API consumers &middot; Query complexity.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 119 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.3</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

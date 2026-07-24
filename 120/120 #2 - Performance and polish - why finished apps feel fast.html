@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance and Polish: Why Finished Apps Feel Fast — FSDI 120</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Performance is not only speed; it is also confidence.</li><li>Polish includes spacing, feedback, loading, consistency, responsiveness.</li><li>Opening question: where does your app feel rough even though it works?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 120 &middot; Capstone: Development Phase 2</div>
+    <h1>Performance and polish: <span class="accent">why finished apps feel fast</span></h1>
+    <p class="sub">A polished app feels responsive, predictable, and stable &mdash; even when the data or network is imperfect.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Interaction polish often matters more than visual polish.</li><li>Slow or uncertain moments break trust.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Polishing colors before fixing rough moments</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Students polish <strong>colors</strong> before fixing rough interaction moments.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Long tables, images, or API calls <strong>block the page.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Small inconsistencies make the app feel <strong>unfinished.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Performance is not only speed. It is also <span class="accent">confidence</span> &mdash; users never wondering if it&rsquo;s stuck.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>First load: image sizes, bundle size.</li><li>Lists: paginate; watch for N+1 queries in Django (select_related/prefetch_related).</li><li>Network: skeletons and optimistic UI where sensible.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five places polish shows up</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">First load</h3><p>The page appears fast and clear.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Navigation</h3><p>Links and transitions feel predictable.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Lists &amp; queries</h3><p>Pagination; no N+1 queries.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Network</h3><p>Something useful while data loads.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Visual consistency</h3><p>Spacing, fonts, buttons, colors.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Seed realistic data volumes and click through.</li><li>Django Debug Toolbar exposes query counts fast.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: a table under real load</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">The table works with ten rows.</div>
+      <div class="cell">Still fast with realistic data &mdash; paginated, indexed, no N+1 queries.</div>
+      <div class="cell">The user <strong>never wonders if the site is stuck.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Test with <strong>realistic data</strong> &mdash; not just three sample records.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Images are the top student-site performance killer.</li><li>Cache what is expensive and read-heavy.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Protect the important pages</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Catalog needs <strong>pagination and sized images.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">The calendar should load <strong>without blocking the form.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">Feeds need <strong>caching and lazy loading.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Smooth lists and fast pages make a CRUD app feel <span class="accent">much more professional.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Devtools Network tab and Django Debug Toolbar over guesses.</li><li>Fix the visible rough moment first.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Verify in devtools, not in theory</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI where <strong>performance risks</strong> are in a specific view or component</li>
+            <li>Ask for a <strong>polish checklist by page</strong></li>
+            <li>Verify in <strong>browser devtools</strong> (Network/Performance), not generic advice</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">!</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">Focus on <strong>visible rough moments</strong> &mdash; generic optimization can waste time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Two-column list: rough moment and proof of fix.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Where does your app feel slow or uncertain?</div>
+      <div class="prompt"><span class="q">2</span> What visual inconsistency appears on multiple pages?</div>
+      <div class="prompt"><span class="q">3</span> What should happen while data loads?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the rough moment you will fix.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Find one rough moment &mdash; and fix it</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Run the app with <strong>realistic sample data.</strong></li>
+          <li>Find <strong>one rough moment</strong> and create a polish issue.</li>
+          <li>Fix one <strong>query, image, loading,</strong> or <strong>spacing</strong> problem.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#9889;</span><span class="lbl">Rough vs polished page</span><span class="path">../shared/images/120-polish-before-after.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Fast is a feeling: confidence the page is never stuck.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>&ldquo;Fast&rdquo; is a feeling: <span class="accent">the page is never stuck.</span></h1>
+    <p class="sub">First load &middot; Navigation &middot; Lists &amp; queries &middot; Network &middot; Visual consistency.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 120 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

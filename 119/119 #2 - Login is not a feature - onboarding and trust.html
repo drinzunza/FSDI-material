@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Is Not a Feature: Onboarding and Trust — FSDI 119</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Login is not automatically valuable to users.</li><li>Users ask: why do you need this, what happens to my data, what do I get?</li><li>Opening question: does your app truly need login for the first demo?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 119 &middot; Capstone: Development Phase 1</div>
+    <h1>Login is not a feature: <span class="accent">onboarding and trust</span></h1>
+    <p class="sub">Authentication is a trust moment. Users need to know why the site wants an account and what happens after signing in.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Auth has multiple states; each needs a UI.</li><li>Login should lead somewhere meaningful, not a blank dashboard.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Asking for trust before showing value</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">The first page asks for an account <strong>before showing value.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Errors say <strong>&ldquo;failed&rdquo;</strong> instead of explaining recovery.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">No clear <strong>logged-out, loading, or signed-in</strong> state.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">A login form is technical. <span class="accent">Onboarding is product communication.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Value before account: browsing before signup.</li><li>Recovery path: reset password, helpful errors.</li><li>Post-login destination: route to the next useful action.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five parts of trustworthy onboarding</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Value before account</h3><p>Show what the site does first.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Clear promise</h3><p>Explain what the account enables.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Recovery path</h3><p>Failed login leads somewhere helpful.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Privacy expectation</h3><p>Say why data is stored.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Post-login destination</h3><p>Route to the next useful action.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Sessions (Django) or JWT (DRF+React) &mdash; either way the states are the same.</li><li>Good auth includes loading, error, reset, success.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: signing in</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Email and password form.</div>
+      <div class="cell">Explain account value, show progress, handle reset, route to the right page.</div>
+      <div class="cell">A new user <strong>understands why signing in matters.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Handle every path: <strong>loading, error, reset, and success</strong> &mdash; not just the happy one.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Guest-first flows often demo better.</li><li>Delay signup until the value moment.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Different apps justify auth differently</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh"><strong>Guest checkout first</strong>; an account saves addresses and history.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">An account keeps <strong>appointments and reminders.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh"><strong>Browse without an account</strong>; posting requires one.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Many apps can <span class="accent">delay signup</span> until the user tries to save or post.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI writes useful first-draft copy.</li><li>Auth code touches security, settings, and middleware &mdash; review carefully.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Great for copy &mdash; careful with auth code</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask for <strong>better onboarding copy</strong> for your exact audience</li>
+            <li>Ask for <strong>auth state handling</strong> (sessions or JWT), check where each state routes</li>
+            <li>Never paste auth code without checking <strong>security assumptions and settings</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Test before you trust</h3>
+            <p style="margin-top:1vh">Wrong password &middot; empty fields &middot; expired session &middot; successful login.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>If a student can&rsquo;t answer prompt 1 in one sentence, the app may not need login yet.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Why does your app need login?</div>
+      <div class="prompt"><span class="q">2</span> What can visitors do before creating an account?</div>
+      <div class="prompt"><span class="q">3</span> What does the page show after login fails?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the auth state you will improve.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Make one auth page earn trust</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Improve <strong>one auth or onboarding page.</strong></li>
+          <li>Add copy that explains <strong>value and privacy.</strong></li>
+          <li>Test <strong>wrong password, empty fields,</strong> and <strong>successful login.</strong></li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128274;</span><span class="lbl">Sign-in page with value copy</span><span class="path">../shared/images/119-onboarding.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: earn trust before credentials; route users somewhere meaningful.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Earn trust <span class="accent">before</span> you ask for a password.</h1>
+    <p class="sub">Value before account &middot; Clear promise &middot; Recovery path &middot; Privacy expectation &middot; A destination after login.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 119 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

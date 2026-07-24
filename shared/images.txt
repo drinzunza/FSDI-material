@@ -1,0 +1,106 @@
+SDGKU FSDI — Capstone Deck Image Manifest
+==========================================
+
+Location on disk : FSDI / 2 - Materials / shared / images
+Referenced in decks as : ../shared/images/<name>
+
+Style guide for all images:
+  - Clean, modern web-app look. SDGKU brand red = #d23939 as the accent.
+  - Light UI in browser-window mockups; rounded cards; flat/vector or clean render.
+  - Diagrams: minimal, labeled, infographic style. Keep text minimal and legible.
+
+Format:  <name> | <preferred size px> | <description>
+(All images are [todo] until created; decks show dashed placeholders meanwhile.)
+
+
+================================================================
+118 — Capstone: Planning & Design
+================================================================
+
+# 118 #1 — What Makes a CRUD App Feel Like a Real Product?
+118-store-dashboard.png | 1536 x 1024 (landscape) | [todo] A web store admin dashboard: low-stock alerts, weekly sales summary card, and a clear &quot;Restock now&quot; primary action. Clean light UI in a browser window mockup, SDGKU-red accents.
+118-order-status.png | 1536 x 1024 (landscape) | [todo] A customer order-status page in a browser: order timeline (placed, packed, shipped), expected date, and a reorder button. Light UI, friendly.
+
+# 118 #2 — Choosing Scope: MVP, Nice-to-Have, Impossible-for-Now
+118-scope-buckets.png | 1536 x 1024 (landscape) | [todo] Three buckets labeled Must ship / Should ship / Future release with feature cards being sorted in. SDGKU-red accent on Must ship.
+118-scope-cutline.png | 1536 x 1024 (landscape) | [todo] A horizontal cut line: feature cards above marked in-scope (red check), cards below greyed out. Clean, minimal.
+
+# 118 #3 — Scrum: Running Your Capstone Like a Real Project
+118-scrum-loop.png | 1536 x 1024 (landscape) | [todo] A circular scrum loop diagram: Backlog -> Sprint goal -> Build -> Demo -> Retro, arrows looping. Friendly flat style, SDGKU-red accent on Demo.
+118-backlog-board.png | 1536 x 1024 (landscape) | [todo] A three-column kanban board (Backlog / Sprint / Done) with small user-story cards, one marked as the sprint goal. Clean web-app look.
+
+# 118 #4 — User Stories That Actually Guide the Build
+118-story-anatomy.png | 1536 x 1024 (landscape) | [todo] Anatomy of a user story: one sentence with parts color-highlighted (user, action, motivation) plus a Done-condition checklist. SDGKU-red highlights.
+118-story-to-page.png | 1536 x 1024 (landscape) | [todo] A story card mapping to a browser page wireframe and a small data model (Product: name, category, price). Flat web style.
+
+# 118 #5 — Wireframes Before Code: Finding UX Problems Early
+118-wireframe-page.png | 1024 x 1536 (portrait) | [todo] Hand-drawn low-fi wireframe of a web page: header, table/list, and a clearly circled primary button. Marker-sketch look, one annotation arrow.
+118-wireframe-states.png | 1672 x 941 (landscape) | [todo] Three side-by-side low-fi wireframes of the same page: empty, loading, populated. Grayscale sketch with small red labels.
+
+# 118 #6 — Usability: Making Your App Effortless
+118-usability-heuristics.png | 1536 x 1024 (landscape) | [todo] A five-card cheat sheet of usability heuristics (visible status, real words, consistency, error prevention, recognition) with tiny icons. Clean, poster-like, SDGKU-red accents.
+118-hallway-test.png | 1536 x 1024 (landscape) | [todo] Illustration of a hallway test: one person using a laptop, another observing with a notepad, speech bubble crossed out (observer stays silent). Friendly flat style.
+
+# 118 #7 — Technical Plan: Data, Auth, APIs, and AI Boundaries
+118-architecture-map.png | 1600 x 1000 (landscape) | [todo] One-page web architecture: browser -> Django (or React + DRF) -> database, plus external services (payments, email) with an auth lock. Two red-star risks. Flat diagram, SDGKU-red accents.
+118-data-boundaries.png | 1600 x 1000 (landscape) | [todo] A dashed boundary separating public pages from auth-protected data, lock on the private side. Minimal web style.
+
+================================================================
+119 — Capstone: Development Phase 1
+================================================================
+
+# 119 #1 — From Waterfall to Scrum: A Short History of Methodologies
+119-methodology-timeline.png | 1672 x 941 (landscape) | [todo] A horizontal timeline: Waterfall (70s) -> Spiral (80s) -> Agile Manifesto (2001) -> Scrum/XP -> Kanban/DevOps, each stop with a tiny icon. Clean infographic, SDGKU-red accents.
+119-waterfall-vs-agile.png | 1536 x 1024 (landscape) | [todo] Two mini-diagrams side by side: waterfall as a staircase of phases ending in one big release vs agile as repeating small loops each ending in a release. Red labels.
+
+# 119 #2 — Login Is Not a Feature: Onboarding and Trust
+119-onboarding.png | 1536 x 1024 (landscape) | [todo] A web sign-in page in a browser mockup: value headline, one privacy line, primary Continue button and secondary Sign in. SDGKU-red primary button.
+119-auth-states.png | 1536 x 1024 (landscape) | [todo] Three browser panels: loading state, friendly error with Try again / Reset password, and success landing. Color-coded labels (amber/red/green).
+
+# 119 #3 — Django Templates, DRF + React, or External APIs?
+119-stack-decision.png | 1536 x 1024 (landscape) | [todo] A decision graphic with three options: Django templates (simple, one deploy), DRF + React (instant UI, two codebases), external APIs (someone else&rsquo;s source of truth) each with a one-line &quot;best when&hellip;&quot;. SDGKU-red accents.
+119-source-of-truth.png | 1536 x 1024 (landscape) | [todo] A browser and a server with an arrow showing which holds the authoritative data; a small cloud for external APIs. Minimal style.
+
+# 119 #4 — Empty States, Loading States, and Errors
+119-empty-state.png | 1536 x 1024 (landscape) | [todo] A friendly empty-state web page: small illustration, headline (&quot;No orders yet&quot;), one guidance line, and a primary &quot;Browse the catalog&quot; button. SDGKU-red button.
+119-state-matrix.png | 1672 x 941 (landscape) | [todo] A 5-up row of small browser panels: empty, loading (skeleton), error, success, server-down (custom 500), each labeled and color-coded.
+
+# 119 #5 — How to Use AI Without Breaking Your Architecture
+119-prompt-loop.png | 1536 x 1024 (landscape) | [todo] Circular five-step loop: Context -> Small request -> Constraints -> Review -> Integrate &amp; test. SDGKU-red accent on Constraints.
+119-architecture-drift.png | 1536 x 1024 (landscape) | [todo] Before/after: tidy Django or React project tree vs the same tree with stray folders, duplicate models/components, and a bolted-on package &mdash; labeled &quot;architecture drift&quot; in red.
+
+# 119 #6 — Test-Driven Development in Django and React
+119-tdd-cycle.png | 1536 x 1024 (landscape) | [todo] A three-node cycle: Red (failing test) -> Green (minimum code) -> Refactor, looping. Red/green/gray nodes, clean flat style.
+119-tdd-django-react.png | 1672 x 941 (landscape) | [todo] Split panel: left a Django tests.py snippet with terminal showing FAILED then OK; right a React Testing Library snippet with npm test output. Dark code panels, labeled.
+
+# 119 #7 — Testing AI-Generated Code Before You Believe It
+119-test-checklist.png | 1536 x 1024 (landscape) | [todo] A five-item checklist card: It runs, Real scenario, Bad input, Persistence, Edge cases &mdash; one item flagged red &quot;caught a bug&quot;. SDGKU-red accents.
+119-refresh-test.png | 1536 x 1024 (landscape) | [todo] Two browser panels: data saved, then after refresh/server-restart still showing data (green check) vs empty (red X). Communicates the persistence test.
+
+# 119 #8 — Making Store, Booking, and Community Apps Feel Engaging
+119-engagement-loop.png | 1536 x 1024 (landscape) | [todo] Circular loop: Trigger -> Easy action -> Feedback -> Progress -> Return reason with a small browser in the center showing an order-status card. Friendly, SDGKU-red accent.
+119-return-value.png | 1536 x 1024 (landscape) | [todo] A web dashboard contrasting raw history table vs insight cards (status, one-click reorder, recommended next). Warm, non-manipulative.
+
+================================================================
+120 — Capstone: Development Phase 2
+================================================================
+
+# 120 #1 — Advanced Features Should Improve the Product, Not Just Impress
+120-advanced-value-risk.png | 1536 x 1024 (landscape) | [todo] A 2x2 matrix: User value vs Technical risk, high-value/low-risk quadrant highlighted in SDGKU red, labeled feature dots scattered.
+120-advanced-fallback.png | 1536 x 1024 (landscape) | [todo] A git-style diagram: working-app trunk with an experimental feature branch and a dashed &quot;fallback to working app&quot; arrow.
+
+# 120 #2 — Performance and Polish: Why Finished Apps Feel Fast
+120-polish-before-after.png | 1672 x 941 (landscape) | [todo] Two browser panels: Rough (spinner blocking, janky spacing, misaligned) vs Polished (skeleton loading, consistent spacing). Red before / green after labels.
+120-page-skeleton.png | 1536 x 1024 (landscape) | [todo] A web page mid-load showing skeleton placeholder blocks instead of a blank screen. Clean light UI.
+
+# 120 #3 — CI/CD: Shipping Small Changes Safely
+120-cicd-pipeline.png | 1672 x 941 (landscape) | [todo] A horizontal pipeline: Commit -> Build -> Test -> Deploy -> Monitor as connected stages with green checks, one stage red with a &quot;fix before merge&quot; label. Clean DevOps infographic.
+120-actions-workflow.png | 1536 x 1024 (landscape) | [todo] A GitHub PR view mockup with the green &quot;All checks have passed&quot; state and the Actions checklist. Light UI.
+
+# 120 #4 — Hosting and Deployment: Servers, Scaling, and Where Your App Lives
+120-hosting-options.png | 1672 x 941 (landscape) | [todo] Three-panel comparison: PaaS (git push -> live), VPS (gunicorn + nginx boxes), static hosting + API (React CDN calling a Django cloud). Labeled, flat infographic.
+120-scaling-vertical-horizontal.png | 1536 x 1024 (landscape) | [todo] Left: one server growing bigger (vertical). Right: several identical servers behind a load balancer (horizontal), shared database below. Clean diagram, SDGKU-red load balancer.
+
+# 120 #5 — Presenting Your Capstone Like a Product, Not Homework
+120-demo-story-arc.png | 1536 x 1024 (landscape) | [todo] Left-to-right story arc: Problem -> User -> Workflow -> Technical decision -> Evidence as connected stops, Evidence highlighted in SDGKU red.
+120-demo-evidence.png | 1536 x 1024 (landscape) | [todo] A tidy collage of evidence: deployed site in a browser, GitHub commit history, green CI check, and a test checklist. Framed as proof, not slides.

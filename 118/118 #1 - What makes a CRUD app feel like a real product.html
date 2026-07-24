@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Makes a CRUD App Feel Like a Real Product? — FSDI 118</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Add, list, edit, delete are NOT the same as a finished product.</li><li>A real product helps the user make a decision, complete a routine, or understand progress.</li><li>Goal today is not a huge new feature &mdash; it is making ONE existing flow feel intentional.</li><li>Opening question: what is the main repeated action in your app?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 118 &middot; Capstone: Planning &amp; Design</div>
+    <h1>What makes a CRUD app feel like a <span class="accent">real product?</span></h1>
+    <p class="sub">CRUD is only the skeleton. Product feeling comes from purpose, trust, feedback, and a polished path through the main task.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>A page called Products or Orders is fine internally, but users think in goals.</li><li>Rename the purpose of a page in plain language.</li><li>A polished app tells the user what happened after save, delete, or change.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Pages get named after tables, not goals</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Pages are named after <strong>database tables</strong> instead of user goals.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">The app saves data but doesn&rsquo;t help users <strong>understand what changed.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">The happy path works, but <strong>empty and error states feel unfinished.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Users think in goals &mdash; <span class="accent">&ldquo;See my orders arriving this week&rdquo;</span>, not &ldquo;Order list.&rdquo;</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Job to be done: what real-world job is the app helping with?</li><li>Opinionated workflow: guide the next step, not just show buttons.</li><li>Useful states: empty, loading, error, success are part of the product.</li><li>Trust &amp; feedback: users need confirmation their action worked.</li><li>Repeatable loop: why would they return?</li><li>Class move: ask students to point to where each item lives in their app.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five things that turn CRUD into a product</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Job to be done</h3><p>The real task the app helps finish.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Opinionated workflow</h3><p>Guides the next step, not just buttons.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Useful states</h3><p>Empty, loading, error, success.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Trust &amp; feedback</h3><p>Confirm the action worked.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Repeatable loop</h3><p>A reason to come back.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Basic = it saves. Product = it means something. Evidence = the user can answer a question.</li><li>Prompt: which column is your main workflow in right now?</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: an online store</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Add, list, edit, and delete products.</div>
+      <div class="cell">Stock status, sales summary, and a clear next action.</div>
+      <div class="cell">The owner can answer: <strong>&ldquo;What needs restocking this week?&rdquo;</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">CRUD stores information. A product turns stored information into <span class="accent">meaning.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>These are patterns students can borrow directly.</li><li>Ask: which example is closest to your app, and what would you borrow?</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>The same move, three domains</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Cart, order status, and recommendations connect <strong>browsing to buying.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Availability, confirmations, and reminders <strong>reduce no-shows.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">Profiles, activity, and replies show that <strong>posting leads somewhere.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Turn stored rows into meaning &mdash; whatever your project domain.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI is useful for critique, state ideas, and wording.</li><li>AI is risky when it invents a new architecture for a small change.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Ask AI to critique one flow &mdash; not invent the site</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Critique <strong>one flow</strong>, not the whole app</li>
+            <li>Ask for <strong>empty / loading / error</strong> copy for a specific page</li>
+            <li>Reject code that renames models or URLs without a reason</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Guardrail question</h3>
+            <p style="margin-top:1vh">Can you explain <strong>why the generated code belongs in your architecture</strong>, and how you tested it?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Give students 60 seconds to answer one prompt with a neighbor.</li><li>Push for specific pages, not general app ideas.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Which part of your app is still just a database table?</div>
+      <div class="prompt"><span class="q">2</span> What would make one repeated action feel rewarding?</div>
+      <div class="prompt"><span class="q">3</span> What proof would convince a user the app is useful?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Small, concrete, done in studio time.</li><li>Stand-up: name the flow you will improve and the evidence you will use.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Make one flow feel more complete</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li><strong>Pick one CRUD flow</strong> in your capstone.</li>
+          <li>Add a <strong>product-level detail</strong>: validation, summary, empty state, progress, or confirmation.</li>
+          <li>Write a <strong>GitHub issue</strong> that names the user benefit.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128722;</span><span class="lbl">Store dashboard with a next action</span><span class="path">../shared/images/118-store-dashboard.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: CRUD is the skeleton; product is purpose + trust + feedback + a polished main task.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Don&rsquo;t ship the table. <br>Ship the <span class="accent">decision.</span></h1>
+    <p class="sub">Purpose &middot; Opinionated workflow &middot; Useful states &middot; Trust &amp; feedback &middot; A reason to return.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 118 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.1</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

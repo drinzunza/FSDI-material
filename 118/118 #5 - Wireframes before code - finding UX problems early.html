@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframes Before Code: Finding UX Problems Early — FSDI 118</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Wireframes are a thinking tool, not an art assignment.</li><li>They catch UX problems before code becomes expensive to change.</li><li>Opening question: what page in your app is hardest for a new visitor to understand?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 118 &middot; Capstone: Planning &amp; Design</div>
+    <h1>Wireframes before code: <span class="accent">finding UX problems early</span></h1>
+    <p class="sub">AI can generate pages quickly, but wireframes reveal whether the page order, information hierarchy, and task flow make sense.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Code-first design follows the data model instead of the user task.</li><li>Navigation should reflect the user journey, not the order features were added.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Sketching the page you can code &mdash; not the one users need</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Students wireframe the page they know how to <strong>code</strong>, not the one users <strong>need</strong>.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Important actions get <strong>buried in menus.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Navigation grows <strong>randomly</strong> as features are added.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">A sketch is far cheaper to change than a generated page. <span class="accent">Find the problem before the code.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>One page can have many controls but one main job.</li><li>The primary action should be visually obvious.</li><li>State variations include empty, loading, error, success.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five checks for every page</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">One page, one job</h3><p>Many controls, one main purpose.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Primary action</h3><p>Visually obvious, not hidden.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Information hierarchy</h3><p>Most important info first.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Navigation path</h3><p>Follows the user journey.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">State variations</h3><p>Empty, loading, error, success.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>A table is not automatically useful.</li><li>Search, filters, summaries, and empty states make lists useful.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: a list page</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">A table with an add button.</div>
+      <div class="cell">Table with search, a useful empty state, and a summary at the top.</div>
+      <div class="cell">A visitor can create, then <strong>find the record without explanation.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">The best UI <span class="accent">reduces the explanation needed</span> &mdash; not just the clicks.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The landing page should match the visitor&rsquo;s immediate need.</li><li>Signup often makes more sense after value is visible.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Land on the visitor&rsquo;s immediate need</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh"><strong>Catalog</strong> before the analytics dashboard.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh"><strong>Next available slot</strong> before the full calendar.</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh"><strong>Browse</strong> before signup pressure.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Dashboards matter <strong>after</strong> data exists. Accounts make sense <strong>after</strong> value is visible.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI can act like a reviewer before it acts like a coder.</li><li>Generated UI is still judged against the wireframe goal.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Let AI review the wireframe before it writes code</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>critique a wireframe in words</strong> before code</li>
+            <li>Ask for <strong>missing states</strong>: empty, loading, error, success</li>
+            <li>Reject a generated page that <strong>hides the main action</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Ask AI</h3>
+            <p style="margin-top:1vh">&ldquo;Here is the page&rsquo;s purpose &mdash; <strong>what is unclear</strong> or hard to find?&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Show a wireframe to a partner; the partner points to the primary action without explanation.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Where does the visitor land first, and why?</div>
+      <div class="prompt"><span class="q">2</span> What is the loudest thing on the page?</div>
+      <div class="prompt"><span class="q">3</span> What would a first-time visitor do without instructions?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name one page whose layout you will improve today.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Sketch, then circle the primary action</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li><strong>Sketch three key pages.</strong></li>
+          <li><strong>Circle the primary action</strong> on each.</li>
+          <li>Add <strong>one alternate state</strong> to one page: empty, error, or loading.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#9998;</span><span class="lbl">Wireframe sketch with circled action</span><span class="path">../shared/images/118-wireframe-page.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>A sketch that fails is a cheap failure; a generated page that fails is expensive.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Fail on paper. <br>It&rsquo;s <span class="accent">cheaper than failing in code.</span></h1>
+    <p class="sub">One page, one job &middot; Obvious primary action &middot; Clear hierarchy &middot; Journey-based navigation &middot; All the states.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 118 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.5</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Use AI Without Breaking Your Architecture — FSDI 119</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>AI can speed development and create invisible complexity.</li><li>The student remains responsible for architecture and testing.</li><li>Opening question: what AI change did you accept but not fully understand?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 119 &middot; Capstone: Development Phase 1</div>
+    <h1>How to use AI <span class="accent">without breaking your architecture</span></h1>
+    <p class="sub">AI is strongest when it receives constraints. It is dangerous when it invents structure, dependencies, and patterns your app does not use.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Whole-feature prompts produce architecture drift.</li><li>Reject output that does not fit the existing project.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>When a prompt quietly rewrites your app</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Prompts ask for <strong>whole features</strong> instead of small changes.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Generated code adds <strong>new folders, models, or packages</strong> needlessly.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Students accept code they <strong>cannot explain.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">You stay responsible for <span class="accent">architecture and testing</span> &mdash; the AI does not.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Context: give the model, the view or component, and conventions.</li><li>Constraints: what not to touch (settings, urls, package.json).</li><li>Review the diff before accepting; then run and prove.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five steps that keep AI in bounds</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Context</h3><p>Model, view/component, naming pattern, goal.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Small request</h3><p>One behavior at a time.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Constraints</h3><p>Tell AI what <em>not</em> to change.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Review</h3><p>Read the diff.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Integrate &amp; test</h3><p>Run the app and prove it.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Works the same for React: name the component, props, and state pattern.</li><li>Better prompts produce code students can explain.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From basic prompt to better prompt</div>
+    <h2>Name the code. Set the boundary.</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic prompt</div>
+      <div class="ch prod">Better prompt</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">&ldquo;Build a store app.&rdquo;</div>
+      <div class="cell"><strong>&ldquo;Using this Product model and DRF viewset pattern, add category filtering to this endpoint.&rdquo;</strong></div>
+      <div class="cell">The result <strong>fits the existing architecture.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Better prompts name the existing code and set boundaries.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI can generate validation, formatting, UI states, test cases.</li><li>Avoid prompts that invite new models or packages.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Ask for small, bounded work</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">One chart from <strong>existing order data.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh"><strong>Validation logic</strong> &mdash; not business decisions.</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh"><strong>UI states</strong> before recommendation algorithms.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Ask for code that <strong>uses existing data</strong> &mdash; not code that <span class="accent">invents new models.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Tradeoffs first prevents unnecessary code.</li><li>The AI log makes work transparent and defensible.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Ask for tradeoffs before implementation</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Provide <strong>file snippets, conventions, and the exact goal</strong></li>
+            <li>Ask AI to <strong>explain tradeoffs</strong> before implementing</li>
+            <li>Keep an <strong>AI log</strong>: prompt, accepted code, manual changes, tests</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Guardrail question</h3>
+            <p style="margin-top:1vh">Which generated file can you <strong>explain line by line?</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Have students rewrite a messy prompt into a constrained one and read both aloud.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What is one prompt that caused messy code?</div>
+      <div class="prompt"><span class="q">2</span> What project constraint should AI always know?</div>
+      <div class="prompt"><span class="q">3</span> Which generated file can you explain line by line?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the constraint you will include in your next AI prompt.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Break one big prompt into three</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Rewrite <strong>one broad prompt</strong> into <strong>three small prompts.</strong></li>
+          <li>Run one and <strong>review the diff.</strong></li>
+          <li>Record the result in the <strong>AI usage log.</strong></li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128260;</span><span class="lbl">Context, constraints, review loop</span><span class="path">../shared/images/119-prompt-loop.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: constrained, small, reviewed &mdash; or it is drift you pay for later.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Small, constrained, <span class="accent">reviewed</span> &mdash; or it&rsquo;s drift.</h1>
+    <p class="sub">Context &middot; Small request &middot; Constraints &middot; Review the diff &middot; Integrate and test.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 119 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.5</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

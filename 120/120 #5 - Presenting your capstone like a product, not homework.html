@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presenting Your Capstone Like a Product, Not Homework — FSDI 120</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>The final presentation is not a tour of every page.</li><li>Show the workflow that proves the app matters.</li><li>Opening question: what is the one workflow your demo must prove?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 120 &middot; Capstone: Development Phase 2</div>
+    <h1>Presenting your capstone <span class="accent">like a product</span>, not homework</h1>
+    <p class="sub">The final demo should tell a product story: user problem, solution, build choices, proof, and what you learned.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Evidence: deployed URL, GitHub history, tests, screenshots.</li><li>Technical decisions should connect to product decisions.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>A page tour is not a demo</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Demos walk through <strong>every page</strong> instead of one meaningful workflow.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Technical choices are listed <strong>without explaining why.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Students show features but <strong>not proof they work.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">A strong demo has a <strong>beginning, middle, and proof</strong> &mdash; and connects tech to <span class="accent">product decisions.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Problem, user, workflow, decision, evidence.</li><li>The deployed URL is FSDI&rsquo;s strongest evidence.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five beats of a product demo</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Problem</h3><p>What real issue it addresses.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">User</h3><p>Who experiences it.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Workflow</h3><p>What the app helps them do.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Technical decision</h3><p>What you chose, and why.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Evidence</h3><p>Deployed URL, tests, history.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Do not demo CRUD as isolated pages; demo the user journey.</li><li>Prepare demo data in advance; avoid live typing.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Demo the journey, not the pages</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Evidence</div>
+      <div class="cell basic">&ldquo;Here is my list, form, edit, and delete.&rdquo;</div>
+      <div class="cell">&ldquo;Here is how a customer finds a product and orders it.&rdquo;</div>
+      <div class="cell">Deployed link, demo data, test checklist, and GitHub history support the story.</div>
+    </div>
+    <p class="lead" style="margin-top:3vh">A good demo says: <strong>here is the problem, here is the action, here is the result.</strong></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>One meaningful loop per demo.</li><li>Demo from production; keep localhost as backup.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Focus on one meaningful loop</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">A <strong>purchase journey</strong> end to end.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Request &rarr; <strong>confirmation</strong> &rarr; reminder.</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">Post &rarr; <strong>reply</strong> &rarr; notification.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Present from the <strong>deployed site</strong> &mdash; localhost is a fallback, not the plan.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI tightens the story; the story must match the app.</li><li>Practice technical and product questions.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Tighten the story &mdash; keep it true to the build</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>critique the demo script</strong> for clarity and pacing</li>
+            <li>Ask for <strong>likely questions</strong> from reviewers or classmates</li>
+            <li>Don&rsquo;t let AI write a <strong>generic pitch</strong> that ignores the real build</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">The presentation must <strong>match the real app.</strong> Practice the hard questions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Three minutes to draft answers; two students say their demo story aloud.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What is the one workflow your demo must prove?</div>
+      <div class="prompt"><span class="q">2</span> What technical decision are you proud of, and why?</div>
+      <div class="prompt"><span class="q">3</span> What evidence shows the app is more than screenshots?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name your demo workflow and the evidence you will show.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Draft a five-minute demo script</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Include <strong>problem, flow, technical highlight, test proof,</strong> and <strong>next release.</strong></li>
+          <li><strong>Practice once</strong> and cut anything that doesn&rsquo;t support the story.</li>
+          <li>Open with the <strong>deployed URL</strong> on screen.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#127909;</span><span class="lbl">Problem to evidence story arc</span><span class="path">../shared/images/120-demo-story-arc.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: story with proof &mdash; problem, workflow, decision, evidence.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Tell a <span class="accent">story with proof</span> &mdash; not a tour of pages.</h1>
+    <p class="sub">Problem &middot; User &middot; Workflow &middot; Technical decision &middot; Evidence.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 120 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.5</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

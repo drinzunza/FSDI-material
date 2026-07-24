@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CI/CD: Shipping Small Changes Safely — FSDI 120</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>CI runs tests on every push; CD ships what passes.</li><li>The goal is boring deploys: small steps, always releasable.</li><li>Opening question: what does your deploy process look like today?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 120 &middot; Capstone: Development Phase 2</div>
+    <h1>CI/CD: shipping <span class="accent">small changes safely</span></h1>
+    <p class="sub">Continuous integration runs your tests on every push. Continuous deployment ships what passes. Small steps, always releasable.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Big-bang deploys concentrate risk.</li><li>Small frequent deploys make each one boring.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>If deploying is scary, you deploy less</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">&ldquo;Big bang&rdquo; deploys where <strong>weeks of changes ship at once.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Main breaks and <strong>nobody knows which commit</strong> did it.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Demo day depends on a <strong>manual, fragile deploy.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">If deploying is scary, you deploy less &mdash; <span class="accent">and it gets scarier.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Commit small: reviewable, revertable.</li><li>Build from scratch catches &lsquo;works on my machine&rsquo;.</li><li>Deploy on green; monitoring closes the loop.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>The pipeline, five stops</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Commit small</h3><p>One change per commit / PR.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Build</h3><p>Installs and builds cleanly from scratch.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Test</h3><p>The suite runs on every push.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Deploy</h3><p>Automatic on green, to a real URL.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Monitor</h3><p>Know when it breaks.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The demo-day-morning test: would you dare deploy?</li><li>With CI/CD, deploys stop being events.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From midnight deploys to boring deploys</div>
+    <h2>Example: demo-day morning</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">CI/CD</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Deploy by dragging files or SSH at midnight.</div>
+      <div class="cell">Push &rarr; tests run &rarr; auto-deploy on green.</div>
+      <div class="cell">You can deploy on <strong>demo-day morning without fear.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">The pipeline is the gatekeeper &mdash; <span class="accent">green means shippable.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Walk the YAML line by line: trigger, runner, steps.</li><li>React version swaps setup-python for setup-node and the test/build commands.</li><li>PaaS hosts (Render/Railway) can auto-deploy the branch when CI is green.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A minimal pipeline</div>
+    <h2>GitHub Actions: test on every push</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <pre style="background:#1c1c1e;color:#e6e6e9;border-radius:12px;padding:2vh;font-family:ui-monospace,Menlo,monospace;font-size:1.75vh;line-height:1.5;overflow:hidden;white-space:pre;margin:0">name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: pip install -r requirements.txt
+      - run: python manage.py test</pre>
+      </div>
+      <div class="col">
+        <ul class="clean">
+          <li>Lives at <strong>.github/workflows/ci.yml</strong> in your repo.</li>
+          <li>React variant: <strong>setup-node &rarr; npm ci &rarr; npm test &rarr; npm run build.</strong></li>
+          <li>The green check on the PR is your <strong>merge gate.</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Workflow YAML is a great AI task &mdash; boilerplate with clear intent.</li><li>Failing-log diagnosis is another strong AI use.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>AI writes the YAML &mdash; you own the gate</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>draft the workflow file</strong> for your exact stack</li>
+            <li>Paste a failing <strong>pipeline log</strong> and ask why it failed</li>
+            <li>Don&rsquo;t merge on red because the code &ldquo;looks fine&rdquo;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">!</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">A red pipeline is <strong>information, not an obstacle.</strong> Fix it before merging.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Ask who has deployed this week &mdash; and who is afraid to.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What does your deploy process look like today?</div>
+      <div class="prompt"><span class="q">2</span> What is the smallest change you shipped this week?</div>
+      <div class="prompt"><span class="q">3</span> What would you check before merging to main?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: show the green check on your PR.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Add CI to your capstone</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Add a <strong>CI workflow</strong> that runs your tests on push.</li>
+          <li>Make one PR that goes <strong>red</strong>, fix it, merge on <strong>green.</strong></li>
+          <li>Bonus: connect <strong>auto-deploy</strong> on your host.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128640;</span><span class="lbl">Commit to deploy pipeline</span><span class="path">../shared/images/120-cicd-pipeline.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: small commits, green pipeline, boring deploys.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Small commits. Green pipeline. <span class="accent">Boring deploys.</span></h1>
+    <p class="sub">Commit &middot; Build &middot; Test &middot; Deploy &middot; Monitor.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 120 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

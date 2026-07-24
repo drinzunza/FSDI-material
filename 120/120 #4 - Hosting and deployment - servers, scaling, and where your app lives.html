@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hosting and Deployment: Servers, Scaling, and Where Your App Lives — FSDI 120</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Deployment is a feature &mdash; plan it early like one.</li><li>Hosting options: PaaS, VPS, static hosting + API.</li><li>Opening question: where will your app live for the final demo?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 120 &middot; Capstone: Development Phase 2</div>
+    <h1>Hosting and deployment: <span class="accent">where your app lives</span></h1>
+    <p class="sub">From your laptop to a URL users can reach &mdash; hosting options, environment config, and how apps scale.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Deploy a walking skeleton in week one of the phase.</li><li>Secrets in the repo is the classic student mistake.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>&ldquo;Works on my machine&rdquo; is not shipped</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">&ldquo;Works on my machine&rdquo; is treated as <strong>done.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">DEBUG=True, <strong>secrets in the repo</strong>, SQLite in production.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">The first deploy happens <strong>the night before the demo.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Deployment is a feature. <span class="accent">Plan it like one &mdash; early.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>PaaS is the capstone default: git push to deploy.</li><li>VPS (gunicorn + nginx) teaches more, costs more time.</li><li>React alone: static hosting (Netlify/Vercel/GitHub Pages).</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five deployment decisions</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Hosting model</h3><p>PaaS (Render/Railway) vs VPS vs static + API.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Environment</h3><p>Env vars; settings per environment; secrets out of the repo.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Database</h3><p>Managed Postgres; migrations on deploy.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Static &amp; media</h3><p>collectstatic; CDN or bucket for uploads.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Domain &amp; HTTPS</h3><p>Custom domain, certificates, ALLOWED_HOSTS.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Seed demo data so the public URL isn&rsquo;t empty.</li><li>Check DEBUG, ALLOWED_HOSTS, and error pages.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: going live</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">The app runs locally.</div>
+      <div class="cell">Deployed on a PaaS with env vars, Postgres, and HTTPS.</div>
+      <div class="cell">A stranger completes the main workflow <strong>from a public URL.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">The proof of deployment is a <strong>stranger</strong> finishing the task on a <span class="accent">public URL.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>CORS bites every React+API student once &mdash; warn them early.</li><li>Hosting free tiers change; check current pricing/limits.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Where each stack usually lives</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Django app</h3><p style="margin-top:1.2vh">PaaS (Render / Railway) or a VPS with <strong>gunicorn + nginx.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>React app</h3><p style="margin-top:1.2vh"><strong>Static hosting</strong> &mdash; Netlify, Vercel, GitHub Pages.</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>React + API</h3><p style="margin-top:1.2vh">React on static hosting, <strong>Django API on a PaaS</strong> &mdash; mind CORS.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Pick the host that matches your stack &mdash; then read its current docs.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Vertical: scale up. Horizontal: scale out behind a load balancer.</li><li>Horizontal requires statelessness: sessions in the DB/cache, files in a bucket.</li><li>This is a favorite interview question &mdash; make sure they can draw it.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Scaling basics</div>
+    <h2>Vertical vs horizontal scaling</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-blue)">
+          <h3>Vertical &mdash; a bigger server</h3>
+          <p style="margin-top:1.2vh">More CPU / RAM on one machine. <strong>Simple</strong>, no code changes &mdash; but it has a <strong>ceiling</strong> and is a <strong>single point of failure.</strong></p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--sdgku-red)">
+          <h3>Horizontal &mdash; more servers</h3>
+          <p style="margin-top:1.2vh">Copies of the app behind a <strong>load balancer.</strong> Needs a <strong>stateless app</strong> and a shared database/sessions &mdash; scales much further.</p>
+        </div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:2.4vh">Capstone rule of thumb: a small PaaS instance is plenty. <span class="accent">Know the difference for interviews.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI comparisons are a starting point; hosts change fast.</li><li>The env-var rule has no exceptions.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>AI compares hosts &mdash; docs decide</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>compare hosts</strong> for your exact stack and budget</li>
+            <li>Ask for a <strong>deploy checklist</strong> for your chosen host</li>
+            <li>Verify against the host&rsquo;s <strong>current docs</strong> &mdash; steps and pricing change</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">!</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">Secrets never go in the repo. <strong>Env vars, always.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Fresh-database question surfaces missing migrations and seed data.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Where will your app live for the final demo?</div>
+      <div class="prompt"><span class="q">2</span> What breaks on a fresh database?</div>
+      <div class="prompt"><span class="q">3</span> Which settings differ between local and production?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: share your public URL, even if it is one page.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Deploy a walking skeleton</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Deploy <strong>any page</strong> of your capstone to your chosen host.</li>
+          <li>Put the <strong>public URL in your README.</strong></li>
+          <li>Note the <strong>env vars</strong> you needed &mdash; and confirm none are in the repo.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#127760;</span><span class="lbl">PaaS vs VPS vs static hosting</span><span class="path">../shared/images/120-hosting-options.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: shipped means a stranger can use it at a public URL.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>If it only runs on your laptop, <span class="accent">it isn&rsquo;t shipped.</span></h1>
+    <p class="sub">Hosting model &middot; Environment &middot; Database &middot; Static files &middot; Domain &amp; HTTPS.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 120 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 10</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

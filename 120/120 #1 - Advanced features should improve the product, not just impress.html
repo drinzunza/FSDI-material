@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Features Should Improve the Product, Not Just Impress — FSDI 120</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Near the end, students want to add something impressive.</li><li>A stable, meaningful feature beats a flashy fragile one.</li><li>Opening question: what advanced feature would actually make your app better?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 120 &middot; Capstone: Development Phase 2</div>
+    <h1>Advanced features should <span class="accent">improve the product</span>, not just impress</h1>
+    <p class="sub">The final phase is not a feature race. Advanced work should make the app more valuable, reliable, or differentiated.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Advanced features have opportunity cost.</li><li>If you cannot explain the user value, it may not belong.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Impressive is not the same as valuable</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">A shiny feature that <strong>doesn&rsquo;t support the demo story.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Advanced work creates <strong>bugs in finished flows.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">The feature exists, but the <strong>user value is hard to explain.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Every new feature has an <span class="accent">opportunity cost</span> &mdash; and can destabilize the main demo.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>User value, demo impact, technical risk, time cost, fallback.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five questions before you build it</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">User value</h3><p>What does the user gain?</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Demo impact</h3><p>Does it strengthen the demo?</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Technical risk</h3><p>What can break?</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Time cost</h3><p>What will it replace?</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Fallback plan</h3><p>What if it fails?</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Charts are not automatically useful.</li><li>A good advanced feature helps the user decide or act.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: adding a chart</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Add charts because charts look advanced.</div>
+      <div class="cell">Add the dashboard chart that answers the owner&rsquo;s main question.</div>
+      <div class="cell">The advanced feature <strong>changes a user decision.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Advanced means <strong>more meaningful</strong>, not just <span class="accent">more complicated.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The most advanced choice is sometimes a practical one.</li><li>Choose features you can demo confidently.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Practical can be the most advanced choice</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Useful <strong>sales trends</strong> beat gimmicky animations.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh"><strong>Calendar export / reminders</strong> may matter more than AI suggestions.</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh"><strong>Better search</strong> beats infinite new features.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Export, search, reliability, or accessibility can <span class="accent">impress more than novelty.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI helps with risk analysis but overpromises feasibility.</li><li>Preserve the working app before experimenting.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Prototype behind a branch &mdash; protect the working app</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>compare candidates</strong> by risk and value</li>
+            <li>Prototype behind a <strong>feature branch</strong></li>
+            <li>Don&rsquo;t add features you <strong>can&rsquo;t demo reliably</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">!</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">AI can <strong>overpromise feasibility.</strong> Preserve the working app before you experiment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Have students name one feature they will NOT add.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What advanced feature actually improves the product?</div>
+      <div class="prompt"><span class="q">2</span> What feature would you remove to protect quality?</div>
+      <div class="prompt"><span class="q">3</span> What fallback keeps the demo safe if it fails?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name your fallback plan.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Choose one advanced feature &mdash; on purpose</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li><strong>Choose one advanced feature.</strong></li>
+          <li>Write its <strong>user value, risk,</strong> and <strong>fallback.</strong></li>
+          <li>Create a <strong>GitHub issue</strong> with acceptance criteria.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#9878;</span><span class="lbl">Value vs. risk matrix</span><span class="path">../shared/images/120-advanced-value-risk.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>An advanced feature should change a user decision, with a fallback.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>If it doesn&rsquo;t change a <span class="accent">user decision</span>, it isn&rsquo;t advanced.</h1>
+    <p class="sub">User value &middot; Demo impact &middot; Technical risk &middot; Time cost &middot; A fallback plan.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 120 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.1</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical Plan: Data, Auth, APIs, and AI Boundaries — FSDI 118</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>A technical plan is a map students can use when AI suggests changes.</li><li>Clarify data, database, auth, APIs, and risky areas.</li><li>Opening question: where does your app&rsquo;s most important data live?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 118 &middot; Capstone: Planning &amp; Design</div>
+    <h1>Technical plan: <span class="accent">data, auth, APIs</span>, and AI boundaries</h1>
+    <p class="sub">A technical plan prevents the project from becoming a pile of generated files. It names what is local, remote, private, and risky.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Tool choice should follow product needs.</li><li>Architecture drift: generated code introduces new patterns unnoticed.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Tools chosen before the data flow is named</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Students choose <strong>tools</strong> before naming the <strong>data flow</strong>.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Auth is added without explaining <strong>what data it protects</strong>.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">AI-generated files cause <strong>architecture drift</strong>.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Auth only earns its place when there is protected data, ownership, or personalization.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Pages show where users act; models show what the app understands.</li><li>Database: SQLite locally, Postgres in production is the common path.</li><li>APIs & services: payments, email, maps &mdash; external dependencies and their failure modes.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five layers of a technical plan</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Pages</h3><p>Where users act.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Models</h3><p>What the app understands.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Database</h3><p>What persists, and where.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Auth</h3><p>Who owns the data.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">APIs &amp; services</h3><p>External dependencies.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>If the app has orders, categories, or ownership, the models must support it.</li><li>Good plans make naming and file organization easier.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: a store&rsquo;s models</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">One Product model in SQLite.</div>
+      <div class="cell">Users, categories, orders, and media storage.</div>
+      <div class="cell">Model names <strong>match the pages and user stories.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Models should reflect <strong>user stories</strong>, not just <span class="accent">database convenience.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Not every app needs a separate API or SPA.</li><li>External services need failure states and fallbacks.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Match the architecture to the need</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Catalog can start in SQLite; <strong>payments need external services.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Time zones and double-booking need <strong>careful model decisions.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">User content needs <strong>moderation, media storage, permissions.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Not every app needs React or a separate API. <span class="accent">Complexity should buy something.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Context improves AI output; small requests reduce unwanted rewrites.</li><li>The AI log helps students defend their decisions.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Give AI the map before asking for code</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Give AI the <strong>architecture map</strong> before asking for code</li>
+            <li>Ask it to modify <strong>one layer at a time</strong>: model, view, or template/component</li>
+            <li>Track generated areas in an <strong>AI usage log</strong> for review</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">Which <strong>one layer</strong> is this change touching &mdash; and can you explain it after?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Have students sketch their data flow in two minutes and star one risk.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Which data must be protected by auth?</div>
+      <div class="prompt"><span class="q">2</span> Which feature forces external services or API keys?</div>
+      <div class="prompt"><span class="q">3</span> Where could an external service fail &mdash; and what should the page show?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name one architecture decision you will document or clean up.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Draw a one-page architecture map</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Label <strong>pages, models, database, auth,</strong> and <strong>external services.</strong></li>
+          <li>Mark <strong>AI-generated areas</strong> of the codebase.</li>
+          <li>Add <strong>two risks</strong> and <strong>one fallback plan.</strong></li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128506;</span><span class="lbl">Browser to Django/DB architecture map</span><span class="path">../shared/images/118-architecture-map.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: name what is local, remote, private, and risky early.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Name it <span class="accent">local, remote, private, risky</span> &mdash; before the files pile up.</h1>
+    <p class="sub">Pages &middot; Models &middot; Database &middot; Auth &middot; APIs &amp; services.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 118 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.7</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

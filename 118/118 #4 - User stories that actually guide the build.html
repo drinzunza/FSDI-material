@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Stories That Actually Guide the Build — FSDI 118</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>A user story is not paperwork &mdash; it should help decide what to build.</li><li>A good story points toward pages, models, validation, and tests.</li><li>Opening question: which story in your document tells you what to build next?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 118 &middot; Capstone: Planning &amp; Design</div>
+    <h1>User stories that actually <span class="accent">guide the build</span></h1>
+    <p class="sub">A useful user story tells you what page, data, and success condition need to exist. Vague stories only decorate the document.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>&lsquo;As a user&rsquo; is usually too broad.</li><li>Good stories include user type, action, benefit, and a testable finish line.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>When a story can&rsquo;t guide a coding decision</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Stories describe the app <strong>owner</strong>, not the user.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">The benefit is <strong>generic</strong> &mdash; &ldquo;so I can be organized.&rdquo;</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Without a <strong>done condition</strong>, the story can&rsquo;t guide coding.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">A good story includes a user type, an action, a benefit, and a <span class="accent">testable finish line.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Specific user: shopper, returning customer, host, moderator.</li><li>Concrete action: search, filter, book, post, reorder.</li><li>Done condition: becomes a manual test checklist.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five parts of a story that guides code</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Specific user</h3><p>Shopper, host, member, admin&hellip;</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Concrete action</h3><p>Search, book, post, filter, reorder.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Real motivation</h3><p>Why the user cares right now.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Data needed</h3><p>What the app must store or fetch.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Done condition</h3><p>How you know it works.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The stronger story implies URLs, a category field, a filtered queryset or filtered state.</li><li>The done condition becomes the manual test.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From weak story to strong story</div>
+    <h2>Same feature, very different guidance</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Weak</div>
+      <div class="ch prod">Stronger</div>
+      <div class="ch proof">Done</div>
+      <div class="cell basic">&ldquo;As a user, I want products so I can shop.&rdquo;</div>
+      <div class="cell"><strong>&ldquo;As a returning customer, I want to filter products by category so I can find what I need quickly.&rdquo;</strong></div>
+      <div class="cell">List, filter by category, product detail, add to cart.</div>
+    </div>
+    <p class="lead" style="margin-top:3vh">The stronger story implies <strong>pages, models, and a checklist</strong> &mdash; categories, filters, details.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Each example has a user moment behind it.</li><li>The story should reveal what information matters.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Every story hides a user moment</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Reorder a past purchase <strong>without searching again.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Cancel or reschedule <strong>without calling.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">Find replies to my post <strong>since my last visit.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">The story should reveal <strong>why the user opens the site</strong> and <span class="accent">what information matters.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI can sharpen stories, but students keep ownership.</li><li>Use AI output as a draft, not final project voice.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Sharpen the story, keep the voice</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>rewrite vague stories</strong> into testable ones</li>
+            <li>Ask it to list <strong>pages, models, and edge cases</strong> a story implies</li>
+            <li>Keep the final wording yours &mdash; AI language gets generic</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Ask AI</h3>
+            <p style="margin-top:1vh">&ldquo;What <strong>nouns and verbs are missing</strong> from this story before it can guide code?&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Pair students; each partner identifies the implied page, model, and done condition.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Which story in your document is still too broad?</div>
+      <div class="prompt"><span class="q">2</span> Can another student tell what page must exist from your story?</div>
+      <div class="prompt"><span class="q">3</span> What does &ldquo;done&rdquo; mean for each story?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the story you are building today.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Write stories you can build against</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Write <strong>three capstone user stories.</strong></li>
+          <li>Add a <strong>done condition</strong> to each.</li>
+          <li>Mark <strong>one as the demo story</strong> for the next class.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#9997;</span><span class="lbl">Anatomy of a strong user story</span><span class="path">../shared/images/118-story-anatomy.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>A story that can&rsquo;t point to a page, data, and a done condition is decoration.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>If it can&rsquo;t point to a <span class="accent">page and a done condition</span>, it&rsquo;s decoration.</h1>
+    <p class="sub">Specific user &middot; Concrete action &middot; Real motivation &middot; Data needed &middot; Done condition.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 118 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.4</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

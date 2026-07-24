@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test-Driven Development in Django and React — FSDI 119</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>TDD: write the failing test first, then the minimum code, then refactor.</li><li>TDD forces you to define &lsquo;done&rsquo; before you code.</li><li>Opening question: which feature would benefit most from a test today?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 119 &middot; Capstone: Development Phase 1</div>
+    <h1>Test-driven development: <span class="accent">red, green, refactor</span></h1>
+    <p class="sub">Write a failing test, make it pass, clean up. TDD turns &ldquo;it should work&rdquo; into &ldquo;here&rsquo;s proof.&rdquo;</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Last-minute tests mirror the implementation, bugs included.</li><li>With AI writing more of the code, tests are your control layer.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Tests written last only confirm what you built</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Tests are written <strong>last</strong> (or never), so they only confirm what exists.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Refactors and AI edits <strong>silently break</strong> features.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Bugs appear at <strong>demo time</strong>, not development time.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">A failing test first forces you to <span class="accent">define &ldquo;done&rdquo; before you code.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Red: the test fails for the right reason.</li><li>Green: minimum code, resist gold-plating.</li><li>Refactor: clean with the net in place.</li><li>Small steps and frequent runs keep the loop honest.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>The TDD cycle</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Red</h3><p>Write a failing test that defines the behavior.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Green</h3><p>Write the minimum code to pass.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Refactor</h3><p>Clean up with tests as a safety net.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Small steps</h3><p>One behavior per cycle.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Run often</h3><p>Every save, every commit.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Show the rhythm live if possible: red, green, refactor in 5 minutes.</li><li>The payoff compounds when AI edits code later.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From clicking around to proving</div>
+    <h2>Example: one behavior</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">TDD</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Code first, click around to check.</div>
+      <div class="cell">Failing test &rarr; passing code &rarr; refactor, per behavior.</div>
+      <div class="cell">The suite <strong>catches a regression before you do.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Each cycle is minutes, not days &mdash; the discipline is the small step.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Django&rsquo;s test client hits real URLs against a temp database.</li><li>Model logic, views, and forms are all testable without a browser.</li><li>pytest-django is a nicer runner; TestCase works out of the box.</li></ul>">
+    <div class="kicker"><span class="dot"></span> TDD in Django</div>
+    <h2>Django: TestCase &rarr; fail &rarr; implement</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Write the test in <strong>tests.py</strong> (TestCase or pytest-django).</li>
+          <li>Run <strong>python manage.py test</strong> &mdash; watch it fail.</li>
+          <li>Implement the model / view logic.</li>
+          <li>Re-run until <strong>green</strong>, then refactor.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <pre style="background:#1c1c1e;color:#e6e6e9;border-radius:12px;padding:2vh;font-family:ui-monospace,Menlo,monospace;font-size:1.75vh;line-height:1.5;overflow:hidden;white-space:pre;margin:0">class ProductTests(TestCase):
+    def test_out_of_stock_hidden(self):
+        Product.objects.create(
+            name=&quot;Mug&quot;, stock=0)
+        res = self.client.get(&quot;/products/&quot;)
+        self.assertNotContains(res, &quot;Mug&quot;)</pre>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Testing Library tests behavior the way a user sees it &mdash; queries by text and role.</li><li>Test what renders, not implementation details like state variables.</li><li>Vitest for Vite projects, Jest for CRA; the API is nearly identical.</li></ul>">
+    <div class="kicker"><span class="dot"></span> TDD in React</div>
+    <h2>React: Testing Library &rarr; fail &rarr; implement</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Write the test with <strong>Vitest/Jest + React Testing Library.</strong></li>
+          <li>Run <strong>npm test</strong> &mdash; watch it fail.</li>
+          <li>Build the component behavior.</li>
+          <li><strong>Green</strong>, then refactor.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <pre style="background:#1c1c1e;color:#e6e6e9;border-radius:12px;padding:2vh;font-family:ui-monospace,Menlo,monospace;font-size:1.75vh;line-height:1.5;overflow:hidden;white-space:pre;margin:0">test(&quot;hides out-of-stock products&quot;, () =&gt; {
+  render(&lt;ProductList
+    items={[{name: &quot;Mug&quot;, stock: 0}]} /&gt;);
+  expect(screen.queryByText(&quot;Mug&quot;))
+    .toBeNull();
+});</pre>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Test-first prompting keeps AI on your requirements.</li><li>AI grading its own homework is the anti-pattern.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>AI and TDD are a natural pair</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI for the <strong>failing test first</strong>, then implement yourself</li>
+            <li>Ask for <strong>edge-case tests</strong> per behavior</li>
+            <li>Don&rsquo;t let AI write the code <strong>and</strong> its own passing tests uncritically</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">!</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">If you can&rsquo;t write the test, <strong>you don&rsquo;t know the requirement yet.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>&lsquo;Hard to test&rsquo; usually means the design couples too many things.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Which feature would benefit most from a test today?</div>
+      <div class="prompt"><span class="q">2</span> What behavior is hard to test &mdash; and why?</div>
+      <div class="prompt"><span class="q">3</span> What would break silently if you refactored now?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the behavior and show the red-to-green commit.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>One behavior, test-first</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Pick <strong>one behavior</strong> in your capstone.</li>
+          <li>Write the <strong>failing test</strong> (Django or React), make it pass.</li>
+          <li><strong>Commit test + code together</strong> and note it in your log.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128308;</span><span class="lbl">Red / green / refactor cycle</span><span class="path">../shared/images/119-tdd-cycle.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the loop: red, green, refactor &mdash; in minutes, per behavior.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Red. Green. <span class="accent">Refactor.</span></h1>
+    <p class="sub">Failing test first &middot; Minimum code &middot; Clean up &middot; Small steps &middot; Run often.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 119 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.6</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 10</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

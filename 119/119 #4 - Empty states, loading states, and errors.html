@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empty States, Loading States, and Errors — FSDI 119</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>A polished app is not only the version with data already loaded.</li><li>Users spend real time in empty, loading, and error states.</li><li>Opening question: what does your app show when there is no data?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 119 &middot; Capstone: Development Phase 1</div>
+    <h1>Empty states, loading states, <span class="accent">and errors</span></h1>
+    <p class="sub">Most student apps only design the happy path. Real apps explain what is happening when there is no data, slow data, or bad data.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Blank pages feel broken even when the code is correct.</li><li>Error messages should help the user recover.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>The happy path is only part of the app</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh"><strong>Blank pages</strong> appear when there is no data.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Loading feels like the site <strong>froze.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Errors <strong>blame the user</strong> or give no next step.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">State design is one of the <span class="accent">fastest ways</span> to make a student app feel finished.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Empty: teach the app, invite the first action.</li><li>Loading: skeleton loaders read better than spinners for lists.</li><li>Server down: a custom 500/404 page is part of the product.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five states, five jobs</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Empty</h3><p>Invites action &mdash; what can happen next.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Loading</h3><p>Skeletons and spinners keep confidence.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Error</h3><p>What went wrong and what to try.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Success</h3><p>Confirm the result, don&rsquo;t annoy.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Server down</h3><p>A human 500 page, not a stack trace.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The empty state is often the first thing a new user sees.</li><li>Generic &lsquo;No data&rsquo; copy is a missed opportunity.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: an empty table</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">The table shows nothing.</div>
+      <div class="cell">The empty table explains the value and offers the add action.</div>
+      <div class="cell">Every state tells the user <strong>what happened and what to do next.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">The empty state is often the <span class="accent">first experience</span> &mdash; a good one can teach the app.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The best state copy is specific to the product.</li><li>Keep form data on errors &mdash; retyping is punishment.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Make the copy specific</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Empty cart &rarr; <strong>&ldquo;Browse the catalog.&rdquo;</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Failed save &rarr; <strong>retry and keep the form data.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">No posts &rarr; <strong>&ldquo;Start the first discussion.&rdquo;</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Recovery actions should be <span class="accent">visible</span> &mdash; not hidden in a console log.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI generates copy variations well; pick the one that fits your tone.</li><li>Trigger states deliberately: empty DB, throttled network, forced exception.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Ask for a full state matrix</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI for <strong>state copy in your product voice</strong></li>
+            <li>Ask for a <strong>state matrix</strong>: empty / loading / error / success / down</li>
+            <li>Review generated UI for <strong>accessibility and contrast</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">Every state should be <strong>testable</strong> &mdash; can you trigger it on demand?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Ask students to list one state they have not implemented; make it today&rsquo;s work item.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What is your most likely empty state?</div>
+      <div class="prompt"><span class="q">2</span> What error would a real user hit first?</div>
+      <div class="prompt"><span class="q">3</span> Can users recover without refreshing the page?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the missing state you will implement.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Implement three real states</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Add one <strong>empty</strong>, one <strong>loading</strong>, and one <strong>error</strong> state.</li>
+          <li><strong>Trigger each deliberately</strong> (empty DB, slow network, forced exception).</li>
+          <li><strong>Screenshot</strong> the improved states for your project document.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128444;</span><span class="lbl">A welcoming empty state page</span><span class="path">../shared/images/119-empty-state.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: every state tells the user what happened and what to do next.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>A blank page isn&rsquo;t neutral &mdash; it reads as <span class="accent">broken.</span></h1>
+    <p class="sub">Empty invites &middot; Loading reassures &middot; Error recovers &middot; Success confirms &middot; 500 stays human.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 119 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.4</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

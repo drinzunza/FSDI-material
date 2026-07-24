@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrum: Running Your Capstone Like a Real Project — FSDI 118</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Scrum is not paperwork &mdash; it is a loop that keeps work honest.</li><li>We run a lightweight solo version: backlog, sprint goal, stand-up, demo, retro.</li><li>Opening question: what did you actually finish last week?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 118 &middot; Capstone: Planning &amp; Design</div>
+    <h1>Scrum, <span class="accent">sized for your capstone</span></h1>
+    <p class="sub">Scrum is a lightweight loop: plan a little, build, show it, adjust. You&rsquo;ll run a one-person version all phase.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Scrum exists because long invisible stretches of work fail.</li><li>Visible weekly outcomes prevent the demo-week panic.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Weeks of coding with nothing to show</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Students plan once, then code for weeks <strong>without checkpoints.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Work drifts to the <strong>fun parts</strong>, not the demo.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">The last week becomes a <strong>panic sprint.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Short cycles with visible outcomes keep the capstone <span class="accent">honest.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Backlog: ordered by value, not by what is fun to code.</li><li>Sprint: one week works well for the capstone.</li><li>Stand-up: what I will improve, what it touches, what evidence proves it.</li><li>Review: demo working software every week.</li><li>Retro: one improvement to your own process.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>The scrum loop, solo edition</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Product backlog</h3><p>Everything, ordered by user value.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Sprint</h3><p>A short timebox with one clear goal.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Stand-up</h3><p>Plan, touchpoint, evidence &mdash; daily.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Review / demo</h3><p>Show working software, not slides.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Retrospective</h3><p>Change one thing about how you work.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The sprint goal is one sentence; the 2-3 backlog items achieve it.</li><li>If everything is the goal, nothing is.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From to-do list to sprint</div>
+    <h2>Example: your week</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Scrum</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">A to-do list in your head.</div>
+      <div class="cell">An ordered backlog, a weekly sprint goal, and a Friday demo.</div>
+      <div class="cell">Every week ends with <strong>something you can show.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">A sprint goal is a <strong>promise to your future demo</strong> &mdash; not a wish list.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Goals are vertical slices (page + logic + data), not horizontal layers.</li><li>&lsquo;Finish all the models&rsquo; is not demoable; a working slice is.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Sprint goals that fit a capstone</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">&ldquo;A customer can order <strong>one product end to end.</strong>&rdquo;</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">&ldquo;A visitor can <strong>request and confirm</strong> a slot.&rdquo;</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">&ldquo;A user can <strong>post and get a reply.</strong>&rdquo;</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Each goal is a complete, demoable slice &mdash; not a layer.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI is great at splitting features into small items with acceptance criteria.</li><li>Sizing and risk-flagging help planning; the goal stays yours.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>AI grooms the backlog &mdash; you own the goal</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>break a feature into backlog items</strong> with acceptance criteria</li>
+            <li>Ask it to <strong>size items (S/M/L)</strong> and flag risky ones</li>
+            <li>Don&rsquo;t let AI set your sprint goal &mdash; that&rsquo;s a product decision</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">!</span>
+          <div><h3>Guardrail</h3>
+            <p style="margin-top:1vh">The backlog is ordered by <strong>user value</strong> &mdash; not by what is fun to code.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Ask two students to say their sprint goal aloud in one sentence.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What is your sprint goal for this week?</div>
+      <div class="prompt"><span class="q">2</span> Which backlog item is riskiest &mdash; and is it early or late in the plan?</div>
+      <div class="prompt"><span class="q">3</span> What did your last &ldquo;demo&rdquo; actually show?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up connection: name your sprint goal and first backlog item.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Set up your one-person scrum</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Write your <strong>backlog</strong> (10+ items, ordered by value).</li>
+          <li>Pick a <strong>one-week sprint goal</strong> and mark the 3 items that achieve it.</li>
+          <li>Schedule your <strong>Friday demo</strong> &mdash; what will you show, to whom?</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128203;</span><span class="lbl">Backlog / Sprint / Done board</span><span class="path">../shared/images/118-backlog-board.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the loop: short cycles, visible outcomes, one process improvement at a time.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Plan a little. Build. <span class="accent">Show it.</span> Adjust.</h1>
+    <p class="sub">Backlog &middot; Sprint goal &middot; Stand-up &middot; Demo &middot; Retro.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 118 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.3</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

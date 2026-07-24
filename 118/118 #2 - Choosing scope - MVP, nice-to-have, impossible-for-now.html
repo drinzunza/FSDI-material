@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing Scope: MVP, Nice-to-Have, Impossible-for-Now — FSDI 118</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Scope is a design skill, not just project management.</li><li>AI makes it tempting to add features because code appears quickly.</li><li>Opening question: if your demo were tomorrow, what feature would absolutely need to work?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 118 &middot; Capstone: Planning &amp; Design</div>
+    <h1>Choosing scope: <span class="accent">MVP</span>, nice-to-have, and impossible-for-now</h1>
+    <p class="sub">Students rarely fail because the idea is too small. They fail because the first version tries to be the whole company.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The first version should prove the app idea with the smallest coherent experience.</li><li>Scope decisions should be written down so students stop renegotiating every class.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>When every feature feels equally important</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Every feature feels equally important, so <strong>nothing gets prioritized.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">AI makes advanced features look cheap, so <strong>scope grows silently.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Students build impressive <strong>fragments</strong> instead of one complete workflow.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">An incomplete advanced feature is worth less than a <span class="accent">finished core workflow.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Core promise: the one sentence that explains what the app does.</li><li>MVP workflow: the minimum pages and data needed to prove that promise.</li><li>Cut line: the boundary that protects the final deliverable.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five layers of scope</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Core promise</h3><p>One sentence: what the app does for the user.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">MVP workflow</h3><p>Minimum pages &amp; data to prove it.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Nice-to-have</h3><p>Polish that matters after the core works.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Later release</h3><p>Valuable, but not this class version.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Cut line</h3><p>The boundary that protects the deliverable.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Payments sound impressive but bring API keys, webhooks, and compliance.</li><li>Prompt: what is your &lsquo;payments&rsquo; feature &mdash; attractive but too expensive right now?</li></ul>">
+    <div class="kicker"><span class="dot"></span> Scope in action</div>
+    <h2>Example: an online store</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic idea</div>
+      <div class="ch prod">Product MVP</div>
+      <div class="ch proof">Later</div>
+      <div class="cell basic">Sell products online.</div>
+      <div class="cell">Catalog, cart, and a simple checkout (pay on pickup).</div>
+      <div class="cell">Online payments, shipping APIs, multi-vendor, subscriptions.</div>
+    </div>
+    <p class="lead" style="margin-top:3vh">&ldquo;Online payments&rdquo; is the tempting feature. A <strong>pay-on-pickup MVP</strong> can still <span class="accent">prove the idea.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>These MVPs are small but complete workflows.</li><li>Avoid payments, social login, or recommendation engines too early.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Small, but a complete workflow</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store MVP</h3><p style="margin-top:1.2vh">Browse the catalog, add to cart, place an order.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking MVP</h3><p style="margin-top:1.2vh">See availability, request a slot, get a confirmation.</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community MVP</h3><p style="margin-top:1.2vh">Post, comment, browse the feed.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Each includes <strong>creation, review, and a reason to return</strong> &mdash; and nothing more, yet.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI can help compare effort, dependencies, and unknowns.</li><li>Generated code should be evaluated against the project goal.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Don&rsquo;t let generated code justify the scope</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>estimate implementation risk</strong> per feature</li>
+            <li>Ask for a <strong>smaller version</strong> that still teaches the concept</li>
+            <li>Compare effort, dependencies, and unknowns</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Ask AI</h3>
+            <p style="margin-top:1vh">&ldquo;What is the <strong>smallest version</strong> of this feature that still provides user value?&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Have students answer silently first, then tell a partner what they will cut.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What feature would you cut if the demo were tomorrow?</div>
+      <div class="prompt"><span class="q">2</span> What single workflow proves the app idea?</div>
+      <div class="prompt"><span class="q">3</span> What feature sounds easy but needs accounts, APIs, or payment keys?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name one thing you are choosing not to build yet.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Draw your cut line</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Make three columns: <strong>Must ship, Should ship, Future release.</strong></li>
+          <li>Move at least <strong>two features out of Must ship.</strong></li>
+          <li>Update the project document with the <strong>decision and the reason.</strong></li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#9986;</span><span class="lbl">Features above and below the cut line</span><span class="path">../shared/images/118-scope-cutline.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Naming what you will NOT build is a scope skill.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Ship the <span class="accent">smallest thing</span> that proves the promise.</h1>
+    <p class="sub">Core promise &middot; MVP workflow &middot; Nice-to-have &middot; Later release &middot; A clear cut line.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 118 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.2</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

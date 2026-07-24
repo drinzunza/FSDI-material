@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Waterfall to Scrum: A Short History of Methodologies — FSDI 119</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Every methodology is a reaction to a way projects used to fail.</li><li>Goal: students understand WHY the practices exist, not just the rituals.</li><li>Opening question: which &lsquo;waterfall habit&rsquo; do you still have?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 119 &middot; Capstone: Development Phase 1</div>
+    <h1>From <span class="accent">waterfall</span> to <span class="accent">scrum</span></h1>
+    <p class="sub">Why software teams stopped planning everything upfront &mdash; and what agile actually promises.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Waterfall failed because requirements change and testing came last.</li><li>Agile is a response, not a religion.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Rituals without reasons</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">Methodology becomes <strong>paperwork</strong> instead of a response to real failures.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Big upfront plans <strong>meet reality and quietly die.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Teams follow ceremonies <strong>without knowing why they exist.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Every methodology is a <span class="accent">reaction to a failure mode.</span> Know the failure it prevents.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Waterfall: phases in sequence; change is expensive; testing last is the killer.</li><li>Spiral/iterative: loops and risk management appear.</li><li>2001 Agile Manifesto: individuals &amp; interactions, working software, customer collaboration, responding to change.</li><li>Scrum &amp; XP operationalize agile; XP brings TDD and pairing.</li><li>Kanban &amp; DevOps: continuous flow and continuous delivery &mdash; the world your CI/CD deck lives in.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Fifty years in five stops</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Waterfall &middot; &rsquo;70s</h3><p>Plan everything, build once, test last.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Iterative &middot; &rsquo;80s&ndash;90s</h3><p>Build in loops, manage risk (Spiral).</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Agile Manifesto &middot; 2001</h3><p>Working software over comprehensive docs.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Scrum &amp; XP</h3><p>Sprints, stand-ups, TDD, pair programming.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Kanban &amp; DevOps</h3><p>Flow, WIP limits, continuous delivery.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Cargo-culting ceremonies wastes solo-capstone time.</li><li>Each practice you keep should map to a risk you actually have.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using history well</div>
+    <h2>Rituals vs reasons</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Cargo cult</div>
+      <div class="ch prod">Agile</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Follow the rituals because the syllabus says so.</div>
+      <div class="cell">Pick the practices that reduce <strong>your project&rsquo;s</strong> risk.</div>
+      <div class="cell">You can explain <strong>why each practice you use exists.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">&ldquo;Working software over comprehensive documentation&rdquo; &mdash; the manifesto in one line.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Connect forward: scrum deck (118), TDD deck (this unit), CI/CD and hosting (120).</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>What each era teaches your capstone</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Waterfall lesson</h3><p style="margin-top:1.2vh">Requirements <strong>will change</strong> &mdash; expect it.</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Agile lesson</h3><p style="margin-top:1.2vh">Demo <strong>working software</strong> early and often.</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>DevOps lesson</h3><p style="margin-top:1.2vh">Deploy <strong>small changes</strong> continuously.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">You are already living this history: weekly demos now, CI/CD in unit 120.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI shortens build time; the bottleneck moves to validation.</li><li>Fast feedback loops are the enduring lesson of this history.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>AI speeds the loop &mdash; it doesn&rsquo;t replace it</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>map your project risks</strong> to practices that address them</li>
+            <li>Ask which agile practices are <strong>overkill for a solo capstone</strong></li>
+            <li>Don&rsquo;t cargo-cult ceremonies AI suggests &mdash; keep what reduces risk</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">?</span>
+          <div><h3>Think about it</h3>
+            <p style="margin-top:1vh">AI makes code cheap. That makes <strong>feedback loops</strong> (demos, tests, deploys) more valuable, not less.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Ask for one habit: big-bang integration, testing last, planning everything upfront.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Which &ldquo;waterfall&rdquo; habit do you still have?</div>
+      <div class="prompt"><span class="q">2</span> What would a one-week iteration of your capstone look like?</div>
+      <div class="prompt"><span class="q">3</span> Which agile value matters most for a solo developer?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the one practice you adopted and why.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Write your &ldquo;how I&rsquo;ll work&rdquo; note</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>One page: <strong>cycle length, demo day,</strong> and how you track work.</li>
+          <li>Adopt <strong>one practice</strong> from XP or Kanban (TDD, WIP limit, pairing with AI).</li>
+          <li>Name the <strong>failure mode</strong> each practice protects you from.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128336;</span><span class="lbl">Waterfall to DevOps timeline</span><span class="path">../shared/images/119-methodology-timeline.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: keep practices that answer a risk you actually have.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Methodologies are answers. <span class="accent">Know the question.</span></h1>
+    <p class="sub">Waterfall &rarr; Iterative &rarr; Agile &rarr; Scrum / XP &rarr; Kanban / DevOps.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 119 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.1</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

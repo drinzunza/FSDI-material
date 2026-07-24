@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usability: Making Your App Effortless — FSDI 118</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Usability = can a first-time visitor finish the main task without help.</li><li>You are not your user &mdash; you know too much about your own app.</li><li>Opening question: where do users hesitate in your app?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 118 &middot; Capstone: Planning &amp; Design</div>
+    <h1>Usability: making your app feel <span class="accent">effortless</span></h1>
+    <p class="sub">Usability is not decoration. It&rsquo;s whether a first-time visitor can finish the main task without help.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Developers know too much: they never get lost in their own app.</li><li>Users who fail blame themselves and quietly leave.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>You are not your user</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">The developer tests only their <strong>own happy path.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Labels, buttons, and flows make sense <strong>only to the person who built them.</strong></p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Users <strong>blame themselves</strong> and leave.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Someone else must be able to finish the task &mdash; <span class="accent">that is the test.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>These are the Nielsen heuristics students can apply immediately.</li><li>Visible status: spinners, confirmations, progress.</li><li>Match real world: &lsquo;Your orders&rsquo;, not &lsquo;OrderSet list&rsquo;.</li><li>Error prevention beats good error messages.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>Five usability heuristics that pay off fast</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Visible status</h3><p>Always show what&rsquo;s happening.</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Match the real world</h3><p>Words users know, not table names.</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Consistency</h3><p>Same action looks the same everywhere.</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Error prevention</h3><p>Confirm destructive actions, validate early.</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Recognition over recall</h3><p>Show options; don&rsquo;t make users remember.</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The form is where student apps lose users.</li><li>Inline validation and a visible primary action fix most of it.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: a form</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">A form that technically works.</div>
+      <div class="cell">Plain-language labels, inline validation, a clear primary button, a confirmation.</div>
+      <div class="cell">A first-time user finishes <strong>without asking questions.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Usability turns &ldquo;it works&rdquo; into <span class="accent">&ldquo;it&rsquo;s easy.&rdquo;</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Each domain has one make-or-break usability question.</li><li>Turn a &lsquo;no&rsquo; into the studio task.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>One question per domain</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Can a visitor <strong>find a product and check out</strong> without help?</p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Is the <strong>next available slot</strong> obvious?</p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">Is <strong>&ldquo;post&rdquo;</strong> the loudest action on the page?</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">If the answer is no, that&rsquo;s this week&rsquo;s work item.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI critique is a good first pass; a human test is the real one.</li><li>The hallway test: watch silently, note hesitations.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Critique with AI, verify with a human</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to <strong>critique a page against usability heuristics</strong></li>
+            <li>Ask for <strong>plain-language rewrites</strong> of labels and error messages</li>
+            <li>Don&rsquo;t accept generic advice &mdash; test with a real person</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">!</span>
+          <div><h3>The hallway test</h3>
+            <p style="margin-top:1vh">Watch one person use your app. <strong>Don&rsquo;t speak.</strong> Where they hesitate is your bug list.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Ask students to name one label that is database language, not user language.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> Where do users hesitate in your app?</div>
+      <div class="prompt"><span class="q">2</span> Which label only makes sense to you?</div>
+      <div class="prompt"><span class="q">3</span> What destructive action has no confirmation?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the friction point you will fix.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Run one hallway test</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li><strong>Watch someone</strong> complete your main task &mdash; silently.</li>
+          <li>Note <strong>three friction points.</strong></li>
+          <li><strong>Fix one today</strong> and screenshot before/after.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128064;</span><span class="lbl">Five heuristics cheat sheet</span><span class="path">../shared/images/118-usability-heuristics.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: usability is measured by a stranger finishing the task.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>If they need you to explain it, <span class="accent">it isn&rsquo;t done.</span></h1>
+    <p class="sub">Visible status &middot; Real words &middot; Consistency &middot; Error prevention &middot; Recognition over recall.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 118 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 118.6</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>

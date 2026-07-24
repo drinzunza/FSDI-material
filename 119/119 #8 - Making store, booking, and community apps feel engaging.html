@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Making Store, Booking, and Community Apps Feel Engaging — FSDI 119</title>
+<link rel="stylesheet" href="../shared/sdgku-slides.css">
+</head>
+<body>
+
+<div id="deck">
+
+  <section class="slide title-slide active" data-notes="
+    <ul class='ntext'><li>Many capstones ask users to enter data repeatedly.</li><li>The question is: what does the app give back?</li><li>Opening question: why would a user come back to your site tomorrow?</li></ul>">
+    <div class="kicker"><span class="dot"></span> FSDI 119 &middot; Capstone: Development Phase 1</div>
+    <h1>Making web apps <span class="accent">feel engaging</span></h1>
+    <p class="sub">Engagement is not spam emails. It comes from progress, personalization, useful feedback, and low-friction repetition.</p>
+    <div class="brand-row">
+      <span class="brand-pill">SDGKU &middot; Full Stack Development Immersive</span>
+      <span class="brand-pill ghost">Capstone Studio</span>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Raw history is useful; insight is better.</li><li>Notifications should support goals, not manipulate attention.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Why this matters</div>
+    <h2>Asking for data without giving value back</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><span class="pill">The risk</span><p style="margin-top:1.6vh">The app asks users to enter data but gives <strong>little back.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-amber)"><span class="pill amber">What usually happens</span><p style="margin-top:1.6vh">Emails and notifications become <strong>noise</strong> instead of support.</p></div>
+      <div class="card" style="border-top:6px solid #8a8a8f"><span class="pill gray">The result</span><p style="margin-top:1.6vh">Progress is shown as <strong>raw history</strong> rather than insight.</p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Engagement is strongest when the app <span class="accent">makes the next action easier.</span></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Trigger, easy action, feedback, progress, return reason.</li><li>Suggested next actions can be simple and rule-based.</li></ul>">
+    <div class="kicker"><span class="dot"></span> A framework you can reuse</div>
+    <h2>The engagement loop</h2>
+    <div class="grid cols-5" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card"><h3><span class="num">1</span></h3><h3 style="margin-top:1.2vh">Trigger</h3><p>What brings the user back?</p></div>
+      <div class="card"><h3><span class="num">2</span></h3><h3 style="margin-top:1.2vh">Easy action</h3><p>Can they act in seconds?</p></div>
+      <div class="card"><h3><span class="num">3</span></h3><h3 style="margin-top:1.2vh">Immediate feedback</h3><p>What changes after the action?</p></div>
+      <div class="card"><h3><span class="num">4</span></h3><h3 style="margin-top:1.2vh">Visible progress</h3><p>What pattern can they see?</p></div>
+      <div class="card"><h3><span class="num">5</span></h3><h3 style="margin-top:1.2vh">Reason to return</h3><p>What value is promised next?</p></div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>The reorder button is engagement in one click.</li><li>Personalization can start as simple rules.</li></ul>">
+    <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
+    <h2>Example: an order history</h2>
+    <div class="compare" style="flex:1;align-content:center">
+      <div class="ch basic">Basic</div>
+      <div class="ch prod">Product</div>
+      <div class="ch proof">Proof</div>
+      <div class="cell basic">Save orders.</div>
+      <div class="cell">Order status, a one-click reorder, and personalized picks.</div>
+      <div class="cell">Users know <strong>why returning is worth it.</strong></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Storing rows isn&rsquo;t engagement. Users need <strong>progress, clarity, or convenience.</strong></p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Email/notification tone matters: support, not spam.</li><li>Ask students where engagement could become annoying.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Examples you&rsquo;ll recognize</div>
+    <h2>Engagement differs by domain</h2>
+    <div class="grid cols-3" style="flex:1;align-content:center;align-items:stretch">
+      <div class="card" style="border-top:6px solid var(--accent-green)"><h3>Store</h3><p style="margin-top:1.2vh">Order tracking and <strong>easy reorder.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--accent-blue)"><h3>Booking</h3><p style="margin-top:1.2vh">Reminders and <strong>one-click rebooking.</strong></p></div>
+      <div class="card" style="border-top:6px solid var(--sdgku-red)"><h3>Community</h3><p style="margin-top:1.2vh">Replies, mentions, and <strong>fresh content.</strong></p></div>
+    </div>
+    <p class="lead" style="margin-top:3vh">Respectful engagement supports the user&rsquo;s goal &mdash; never pressure.</p>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>AI generates reward language; students judge whether it is respectful.</li><li>Verify any calculation or trend before showing it.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Using AI as a design partner, not autopilot</div>
+    <h2>Design the loop, then remove the manipulation</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <div class="card" style="border-top:6px solid var(--accent-green)">
+          <h3 style="color:var(--accent-green)">Good use</h3>
+          <ul class="clean" style="margin-top:1.6vh">
+            <li>Ask AI to design engagement loops, then <strong>remove manipulative parts</strong></li>
+            <li>Ask for <strong>low-pressure email/notification copy</strong></li>
+            <li>Use AI for insight wording &mdash; but <strong>verify calculations yourself</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="bigmark">!</span>
+          <div><h3>Ethical guardrail</h3>
+            <p style="margin-top:1vh">Where could engagement become <strong>annoying or manipulative?</strong> Write that boundary down.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Ask each student for one ethical boundary for their app.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Talk it through</div>
+    <h2>Discussion prompts</h2>
+    <div class="prompt-list body">
+      <div class="prompt"><span class="q">1</span> What value does your app return after the user acts?</div>
+      <div class="prompt"><span class="q">2</span> What should the app remember about the user?</div>
+      <div class="prompt"><span class="q">3</span> Where could engagement become annoying or manipulative?</div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+  <section class="slide" data-notes="
+    <ul class='ntext'><li>Stand-up: name the engagement loop you will improve.</li></ul>">
+    <div class="kicker"><span class="dot"></span> Studio task</div>
+    <h2>Design one respectful loop</h2>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw">
+      <div class="col">
+        <ul class="clean">
+          <li>Design one loop: <strong>trigger, action, reward, return reason.</strong></li>
+          <li>Add one UI element that shows <strong>progress or insight.</strong></li>
+          <li>Write <strong>one ethical boundary</strong> for your engagement design.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="imgph" style="height:36vh"><span class="ic">&#128200;</span><span class="lbl">Trigger to return-reason loop</span><span class="path">../shared/images/119-engagement-loop.png</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+  <section class="slide title-slide" data-notes="
+    <ul class='ntext'><li>Land the lens: give value back every time, and keep it respectful.</li></ul>">
+    <div class="kicker"><span class="dot"></span> One lens to take with you</div>
+    <h1>Give something back <span class="accent">every time</span> the user gives you data.</h1>
+    <p class="sub">Trigger &middot; Easy action &middot; Immediate feedback &middot; Visible progress &middot; A reason to return.</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU &middot; FSDI 119 Capstone Studio</span></div>
+    <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.8</span></div>
+  </section>
+
+</div>
+
+<div id="progress"></div>
+<div id="counter">1 / 9</div>
+<div class="navhint">&larr; &rarr; navigate &middot; N notes &middot; F fullscreen</div>
+<div id="notes">
+  <span class="close" onclick="document.body.classList.remove('notes-on')">close (N)</span>
+  <h4>Presenter notes</h4>
+  <div id="notes-body"></div>
+</div>
+
+<script src="../shared/sdgku-slides.js"></script>
+</body>
+</html>
