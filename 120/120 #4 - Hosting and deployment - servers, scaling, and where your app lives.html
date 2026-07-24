@@ -53,7 +53,7 @@
     <ul class='ntext'><li>Seed demo data so the public URL isn&rsquo;t empty.</li><li>Check DEBUG, ALLOWED_HOSTS, and error pages.</li></ul>">
     <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
     <h2>Example: going live</h2>
-    <div class="compare" style="flex:1;align-content:center">
+    <div class="compare" style="flex:none">
       <div class="ch basic">Basic</div>
       <div class="ch prod">Product</div>
       <div class="ch proof">Proof</div>
@@ -61,7 +61,10 @@
       <div class="cell">Deployed on a PaaS with env vars, Postgres, and HTTPS.</div>
       <div class="cell">A stranger completes the main workflow <strong>from a public URL.</strong></div>
     </div>
-    <p class="lead" style="margin-top:3vh">The proof of deployment is a <strong>stranger</strong> finishing the task on a <span class="accent">public URL.</span></p>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw;margin-top:2.4vh">
+      <div class="col"><p class="lead" style="margin:0">The proof of deployment is a <strong>stranger</strong> finishing the task on a <span class="accent">public URL.</span></p></div>
+      <div class="col"><img src="../shared/images/120-scaling-vertical-horizontal.png" alt="Vertical vs horizontal scaling" style="width:100%;border-radius:14px;box-shadow:var(--shadow)"></div>
+    </div>
     <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>
   </section>
 
@@ -151,7 +154,7 @@
         </ul>
       </div>
       <div class="col">
-        <div class="imgph" style="height:36vh"><span class="ic">&#127760;</span><span class="lbl">PaaS vs VPS vs static hosting</span><span class="path">../shared/images/120-hosting-options.png</span></div>
+        <img src="../shared/images/120-hosting-options.png" alt="PaaS vs VPS vs static hosting" style="max-height:36vh;max-width:100%;display:block;margin:0 auto;border-radius:12px;box-shadow:var(--shadow)">
       </div>
     </div>
     <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.4</span></div>

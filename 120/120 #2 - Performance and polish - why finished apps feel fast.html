@@ -53,7 +53,7 @@
     <ul class='ntext'><li>Seed realistic data volumes and click through.</li><li>Django Debug Toolbar exposes query counts fast.</li></ul>">
     <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
     <h2>Example: a table under real load</h2>
-    <div class="compare" style="flex:1;align-content:center">
+    <div class="compare" style="flex:none">
       <div class="ch basic">Basic</div>
       <div class="ch prod">Product</div>
       <div class="ch proof">Proof</div>
@@ -61,7 +61,10 @@
       <div class="cell">Still fast with realistic data &mdash; paginated, indexed, no N+1 queries.</div>
       <div class="cell">The user <strong>never wonders if the site is stuck.</strong></div>
     </div>
-    <p class="lead" style="margin-top:3vh">Test with <strong>realistic data</strong> &mdash; not just three sample records.</p>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw;margin-top:2.4vh">
+      <div class="col"><p class="lead" style="margin:0">Test with <strong>realistic data</strong> &mdash; not just three sample records.</p></div>
+      <div class="col"><img src="../shared/images/120-page-skeleton.png" alt="Skeleton placeholders instead of a blank page" style="width:100%;border-radius:14px;box-shadow:var(--shadow)"></div>
+    </div>
     <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>
   </section>
 
@@ -129,7 +132,7 @@
         </ul>
       </div>
       <div class="col">
-        <div class="imgph" style="height:36vh"><span class="ic">&#9889;</span><span class="lbl">Rough vs polished page</span><span class="path">../shared/images/120-polish-before-after.png</span></div>
+        <img src="../shared/images/120-polish-before-after.png" alt="Rough vs polished page" style="max-height:36vh;max-width:100%;display:block;margin:0 auto;border-radius:12px;box-shadow:var(--shadow)">
       </div>
     </div>
     <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.2</span></div>

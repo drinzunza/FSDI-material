@@ -53,7 +53,7 @@
     <ul class='ntext'><li>The demo-day-morning test: would you dare deploy?</li><li>With CI/CD, deploys stop being events.</li></ul>">
     <div class="kicker"><span class="dot"></span> From midnight deploys to boring deploys</div>
     <h2>Example: demo-day morning</h2>
-    <div class="compare" style="flex:1;align-content:center">
+    <div class="compare" style="flex:none">
       <div class="ch basic">Basic</div>
       <div class="ch prod">CI/CD</div>
       <div class="ch proof">Proof</div>
@@ -61,7 +61,10 @@
       <div class="cell">Push &rarr; tests run &rarr; auto-deploy on green.</div>
       <div class="cell">You can deploy on <strong>demo-day morning without fear.</strong></div>
     </div>
-    <p class="lead" style="margin-top:3vh">The pipeline is the gatekeeper &mdash; <span class="accent">green means shippable.</span></p>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw;margin-top:2.4vh">
+      <div class="col"><p class="lead" style="margin:0">The pipeline is the gatekeeper &mdash; <span class="accent">green means shippable.</span></p></div>
+      <div class="col"><img src="../shared/images/120-actions-workflow.png" alt="A PR with all checks passed" style="width:100%;border-radius:14px;box-shadow:var(--shadow)"></div>
+    </div>
     <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>
   </section>
 
@@ -144,7 +147,7 @@ jobs:
         </ul>
       </div>
       <div class="col">
-        <div class="imgph" style="height:36vh"><span class="ic">&#128640;</span><span class="lbl">Commit to deploy pipeline</span><span class="path">../shared/images/120-cicd-pipeline.png</span></div>
+        <img src="../shared/images/120-cicd-pipeline.png" alt="Commit to deploy pipeline" style="max-height:36vh;max-width:100%;display:block;margin:0 auto;border-radius:12px;box-shadow:var(--shadow)">
       </div>
     </div>
     <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 120.3</span></div>

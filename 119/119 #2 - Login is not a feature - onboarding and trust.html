@@ -53,7 +53,7 @@
     <ul class='ntext'><li>Sessions (Django) or JWT (DRF+React) &mdash; either way the states are the same.</li><li>Good auth includes loading, error, reset, success.</li></ul>">
     <div class="kicker"><span class="dot"></span> From CRUD behavior to product behavior</div>
     <h2>Example: signing in</h2>
-    <div class="compare" style="flex:1;align-content:center">
+    <div class="compare" style="flex:none">
       <div class="ch basic">Basic</div>
       <div class="ch prod">Product</div>
       <div class="ch proof">Proof</div>
@@ -61,7 +61,10 @@
       <div class="cell">Explain account value, show progress, handle reset, route to the right page.</div>
       <div class="cell">A new user <strong>understands why signing in matters.</strong></div>
     </div>
-    <p class="lead" style="margin-top:3vh">Handle every path: <strong>loading, error, reset, and success</strong> &mdash; not just the happy one.</p>
+    <div class="row" style="flex:1;align-items:center;gap:2.4vw;margin-top:2.4vh">
+      <div class="col"><p class="lead" style="margin:0">Handle every path: <strong>loading, error, reset, and success</strong> &mdash; not just the happy one.</p></div>
+      <div class="col"><img src="../shared/images/119-auth-states.png" alt="Auth states: loading, error, and success" style="width:100%;border-radius:14px;box-shadow:var(--shadow)"></div>
+    </div>
     <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
   </section>
 
@@ -129,7 +132,7 @@
         </ul>
       </div>
       <div class="col">
-        <div class="imgph" style="height:36vh"><span class="ic">&#128274;</span><span class="lbl">Sign-in page with value copy</span><span class="path">../shared/images/119-onboarding.png</span></div>
+        <img src="../shared/images/119-onboarding.png" alt="Sign-in page with value copy" style="max-height:36vh;max-width:100%;display:block;margin:0 auto;border-radius:12px;box-shadow:var(--shadow)">
       </div>
     </div>
     <div class="foot"><span class="brand"><b>SDGKU</b> FSDI</span><span>Topic 119.2</span></div>
