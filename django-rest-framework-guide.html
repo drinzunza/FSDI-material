@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A quick, practical Django REST Framework tutorial: build a Movies CRUD API with a model, serializer, viewset, router, authentication, and optional CORS.">
+  <title>Django REST Framework · Movies API Guide</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23d23939'/%3E%3Cpath d='M18 20h28M18 32h28M18 44h28' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #ededf0;
+      --surface: #f5f5f7;
+      --surface-raised: #fff;
+      --surface-soft: #f2f2f4;
+      --ink: #1c1c1e;
+      --ink-soft: #3a3a3c;
+      --muted: #6b6b70;
+      --border: #e4e4e8;
+      --accent: #d23939;
+      --accent-strong: #a82727;
+      --accent-soft: #fdeaea;
+      --accent-blue: #0a84ff;
+      --accent-green: #30b565;
+      --accent-amber: #f0a000;
+      --secondary: #0a84ff;
+      --warning: #a97400;
+      --warning-soft: #fdf0d8;
+      --code: #1c1c1e;
+      --code-ink: #f2f2f7;
+      --shadow: 0 10px 40px rgba(0, 0, 0, .1);
+      --radius: 20px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --page: #101013;
+      --surface: #1c1c20;
+      --surface-raised: #27272c;
+      --surface-soft: #303037;
+      --ink: #f4f4f6;
+      --ink-soft: #d1d1d5;
+      --muted: #aaaab1;
+      --border: #3a3a42;
+      --accent: #ff7272;
+      --accent-strong: #ff9292;
+      --accent-soft: #432629;
+      --accent-blue: #65aeff;
+      --accent-green: #6edc96;
+      --accent-amber: #ffc66e;
+      --secondary: #9bb7ff;
+      --warning: #ffbc75;
+      --warning-soft: #3c2917;
+      --code: #101013;
+      --code-ink: #f2f2f7;
+      --shadow: 0 22px 60px rgba(0, 0, 0, .25);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--page); color: var(--ink-soft); font: 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent-strong); text-underline-offset: .18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    [hidden] { display: none !important; }
+    :focus-visible { outline: 3px solid var(--secondary); outline-offset: 3px; border-radius: 4px; }
+    .skip-link { position: fixed; z-index: 100; top: .75rem; left: .75rem; transform: translateY(-160%); padding: .55rem .8rem; border-radius: 8px; background: var(--ink); color: var(--surface); }
+    .skip-link:focus { transform: translateY(0); }
+    body > header { position: relative; overflow: hidden; padding: clamp(3.5rem, 8vw, 6rem) max(1.25rem, calc((100vw - 1220px) / 2)); border-top: 8px solid var(--accent); border-bottom: 1px solid var(--border); background: linear-gradient(160deg, #fff 0%, #f5f5f7 60%, #fdeaea 100%); color: var(--ink); }
+    body > header::after { content: "{ API }"; position: absolute; right: max(1rem, calc((100vw - 1220px) / 2)); top: 50%; transform: translateY(-50%); color: var(--accent); font: 800 clamp(5rem, 11vw, 11rem)/1 var(--mono); opacity: .12; pointer-events: none; }
+    :root[data-theme="dark"] body > header { background: linear-gradient(160deg, #1c1c20 0%, #27272c 60%, #432629 100%); }
+    body > header .hero-kicker { position: relative; display: flex; align-items: center; gap: .7rem; margin: 0 0 1.35rem; color: var(--accent-strong); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .hero-kicker .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+    body > header h1 { position: relative; max-width: 790px; margin: 0; color: var(--ink); font-size: clamp(3rem, 7.2vw, 6.2rem); font-weight: 800; line-height: 1.03; letter-spacing: -.045em; }
+    body > header h1 .accent { color: var(--accent); }
+    body > header p { position: relative; max-width: 730px; margin: 1.3rem 0 0; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.28rem); }
+    body > header .time { width: fit-content; padding: .55rem .85rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-raised); color: var(--muted); font-size: .9rem; box-shadow: 0 6px 22px rgba(0, 0, 0, .05); }
+    body > header .time strong { color: var(--accent-strong); }
+    .brand-row { position: relative; display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.7rem; }
+    .brand-pill { display: inline-flex; align-items: center; min-height: 2.15rem; padding: .35rem .9rem; border-radius: 999px; background: var(--accent); color: #fff; font-size: .82rem; font-weight: 750; letter-spacing: .01em; }
+    .brand-pill.ghost { border: 2px solid var(--accent); background: var(--surface-raised); color: var(--accent-strong); }
+    :root[data-theme="dark"] .brand-pill:not(.ghost) { background: #a82727; }
+    .layout { display: grid; grid-template-columns: 270px minmax(0, 920px); gap: clamp(1.5rem, 4vw, 4rem); max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.25rem 6rem; }
+    aside[aria-label="Guide navigation"] { align-self: start; position: sticky; top: 1.25rem; max-height: calc(100vh - 2.5rem); overflow: auto; padding: 1.15rem; border: 1px solid var(--border); border-top: 6px solid var(--accent); border-radius: var(--radius); background: var(--surface-raised); box-shadow: var(--shadow); }
+    #guide-menu > summary { display: none; }
+    .guide-tools { display: grid; gap: .8rem; margin-bottom: 1rem; }
+    .tool-row { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+    .eyebrow { margin: 0; color: var(--accent-strong); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .theme-toggle { min-width: 2.6rem; min-height: 2.6rem; border: 1px solid var(--border); border-radius: 50%; background: var(--surface-soft); color: var(--ink); }
+    .search-label { font-size: .82rem; font-weight: 750; }
+    #guide-search { width: 100%; padding: .65rem .75rem; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-raised); color: var(--ink); }
+    progress { width: 100%; height: .55rem; border: 0; border-radius: 999px; overflow: hidden; accent-color: var(--accent); }
+    progress::-webkit-progress-bar { background: var(--surface-soft); }
+    progress::-webkit-progress-value { background: var(--accent); }
+    nav[aria-label="Sections"] { display: grid; gap: .2rem; }
+    nav[aria-label="Sections"] a { padding: .45rem .6rem; border-radius: 8px; color: var(--muted); font-size: .9rem; font-weight: 650; text-decoration: none; }
+    nav[aria-label="Sections"] a:hover, nav[aria-label="Sections"] a[aria-current="location"] { background: var(--accent-soft); color: var(--accent-strong); }
+    .progress-list { display: grid; gap: .25rem; margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .progress-list label { display: flex; gap: .55rem; align-items: flex-start; font-size: .78rem; color: var(--muted); }
+    .progress-list input { margin-top: .25rem; accent-color: var(--accent); }
+    main { min-width: 0; }
+    main > section { scroll-margin-top: 1.5rem; margin: 0 0 2rem; padding: clamp(1.35rem, 4vw, 3.25rem); border: 1px solid var(--border); border-top: 7px solid var(--accent); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+    main > section > .section-label { display: flex; align-items: center; gap: .65rem; margin: 0 0 .7rem; color: var(--accent-strong); font-size: .76rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    main > section > .section-label::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    h2, h3 { color: var(--ink); line-height: 1.18; }
+    h2 { margin: 0 0 1rem; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -.025em; }
+    h3 { margin: 2rem 0 .7rem; font-size: 1.3rem; font-weight: 750; }
+    p { max-width: 76ch; }
+    code { padding: .1em .3em; border-radius: 5px; background: var(--surface-soft); color: var(--accent-strong); font: .88em var(--mono); }
+    pre { max-width: 100%; margin: .75rem 0; padding: 1.1rem; overflow: auto; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 13px; background: var(--code); color: var(--code-ink); font: .82rem/1.65 var(--mono); tab-size: 4; }
+    pre code { padding: 0; background: transparent; color: inherit; font: inherit; }
+    .copy-button { float: right; margin: 0 0 -.35rem .75rem; padding: .35rem .65rem; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-soft); color: var(--ink); font-size: .75rem; font-weight: 750; }
+    [data-file] > p:first-child { display: inline-block; margin: 1rem 0 0; padding: .35rem .7rem; border-radius: 8px 8px 0 0; background: var(--accent); color: #fff; font-size: .75rem; font-weight: 750; }
+    :root[data-theme="dark"] [data-file] > p:first-child { background: #a82727; }
+    [data-file] > p:first-child code { background: transparent; color: inherit; }
+    [data-file] > pre { margin-top: 0; border-top-left-radius: 0; }
+    .flow { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.4rem 0; padding: 1rem; border: 2px dashed var(--accent); border-radius: 14px; background: var(--surface-raised); }
+    .flow span:not(.arrow) { padding: .45rem .7rem; border-radius: 8px; background: var(--ink); color: var(--surface-raised); font: 700 .84rem var(--mono); }
+    .flow p { flex-basis: 100%; margin: .2rem 0 0; color: var(--muted); font-size: .9rem; }
+    .arrow { color: var(--accent-strong); font-weight: 800; }
+    .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1.2rem 0; }
+    .tiles > div { padding: 1rem; border: 1px solid var(--border); border-top: 5px solid var(--accent); border-radius: 16px; background: var(--surface-raised); box-shadow: 0 6px 22px rgba(0, 0, 0, .05); }
+    .tiles > div:nth-child(4n + 2) { border-top-color: var(--accent-blue); }
+    .tiles > div:nth-child(4n + 3) { border-top-color: var(--accent-green); }
+    .tiles > div:nth-child(4n + 4) { border-top-color: var(--accent-amber); }
+    .tiles strong { color: var(--accent-strong); }
+    .tiles p { margin: .25rem 0 0; color: var(--muted); font-size: .92rem; }
+    .note { margin: 1.4rem 0; padding: 1rem 1.1rem; border-left: 5px solid var(--accent); border-radius: 0 12px 12px 0; background: var(--accent-soft); }
+    .caution { border-left-color: var(--warning); background: var(--warning-soft); }
+    ol, ul { padding-left: 1.4rem; }
+    li { margin: .5rem 0; padding-left: .25rem; }
+    .endpoint-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .endpoint-table th, .endpoint-table td { padding: .75rem .55rem; border-bottom: 1px solid var(--border); background: var(--surface-raised); text-align: left; vertical-align: top; }
+    .endpoint-table th { color: var(--accent-strong); }
+    .table-scroll { overflow-x: auto; }
+    .knowledge-check { margin: 1.5rem 0; padding: 1rem; border: 1px solid var(--border); border-radius: 14px; background: var(--warning-soft); }
+    .knowledge-check summary { color: var(--warning); cursor: pointer; font-weight: 800; }
+    .search-empty { padding: 1.5rem; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+    body > footer { padding: 2.5rem 1.25rem; border-top: 1px solid var(--border); color: var(--muted); text-align: center; }
+    body > footer strong { color: var(--accent-strong); }
+    #interaction-status { position: fixed; right: 1rem; bottom: 1rem; z-index: 20; max-width: 320px; padding: .7rem 1rem; border-radius: 10px; background: var(--ink); color: var(--surface); box-shadow: var(--shadow); }
+    #interaction-status:empty { display: none; }
+    @media (max-width: 880px) {
+      body > header::after { right: -2rem; }
+      .layout { grid-template-columns: 1fr; padding-top: 1rem; }
+      aside[aria-label="Guide navigation"] { position: static; max-height: none; }
+      #guide-menu > summary { display: list-item; padding: .35rem; color: var(--accent-strong); font-weight: 800; cursor: pointer; }
+      #guide-menu[open] > summary { margin-bottom: 1rem; border-bottom: 1px solid var(--border); }
+      nav[aria-label="Sections"], .progress-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      body { font-size: 16px; }
+      body > header { padding-top: 4rem; padding-bottom: 4rem; }
+      body > header .time { border-radius: 14px; }
+      main > section { padding: 1.1rem; border-radius: 16px; }
+      .tiles, nav[aria-label="Sections"], .progress-list { grid-template-columns: 1fr; }
+      pre { margin-inline: -.35rem; font-size: .75rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    @media print {
+      :root { color-scheme: light; }
+      body { background: #fff; color: #000; font-size: 10pt; }
+      body > header { padding: 2rem; background: #fff; color: #000; border: 0; }
+      body > header p { color: #333; }
+      body > header::after, aside[aria-label="Guide navigation"], .copy-button, #interaction-status { display: none !important; }
+      .layout { display: block; max-width: none; padding: 0; }
+      main > section { break-inside: avoid-page; box-shadow: none; border: 0; }
+      pre { white-space: pre-wrap; color: #000; background: #f2f2f2; border-color: #ccc; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header>
+    <p class="hero-kicker"><span class="dot" aria-hidden="true"></span> FSDI · Practical API Guide</p>
+    <h1>Django <span class="accent">REST Framework</span></h1>
+    <p>Turn one Django <strong>Movie</strong> model into a working JSON API. Follow the path from configuration to serializers, views, URLs, and CRUD requests.</p>
+    <p class="time"><strong>Quick learning path:</strong> model → serializer → viewset → router → request</p>
+    <div class="brand-row"><span class="brand-pill">SDGKU · Full Stack Development Immersive</span><span class="brand-pill ghost">Movies API Tutorial</span></div>
+  </header>
+  <div class="layout">
+    <aside aria-label="Guide navigation">
+      <details id="guide-menu" open>
+        <summary>Contents and progress</summary>
+        <div class="guide-tools">
+          <div class="tool-row">
+            <p class="eyebrow">Learning roadmap</p>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Change color theme" aria-pressed="false">◐</button>
+          </div>
+          <label class="search-label" for="guide-search">Search the guide</label>
+          <input id="guide-search" type="search" placeholder="For example, serializer or CORS" autocomplete="off">
+          <div>
+            <div class="tool-row"><span class="search-label">Progress</span><output id="progress-output">0%</output></div>
+            <progress id="progress-bar" value="0" max="100" aria-label="Guide progress">0%</progress>
+          </div>
+        </div>
+        <nav aria-label="Sections">
+          <a href="#map">How DRF fits together</a>
+          <a href="#start">Create the project</a>
+          <a href="#settings">Configure Django</a>
+          <a href="#model">Create a model</a>
+          <a href="#serializer">Create a serializer</a>
+          <a href="#viewset">Create a view</a>
+          <a href="#urls">Connect the URLs</a>
+          <a href="#try-it">Run and test CRUD</a>
+          <a href="#cors">CORS, if needed</a>
+          <a href="#troubleshooting">Fix common errors</a>
+        </nav>
+        <div class="progress-list" aria-label="Mark completed sections">
+          <label><input type="checkbox" data-complete="map"> 01 Mental model</label>
+          <label><input type="checkbox" data-complete="start"> 02 Project</label>
+          <label><input type="checkbox" data-complete="settings"> 03 Settings</label>
+          <label><input type="checkbox" data-complete="model"> 04 Model</label>
+          <label><input type="checkbox" data-complete="serializer"> 05 Serializer</label>
+          <label><input type="checkbox" data-complete="viewset"> 06 Viewset</label>
+          <label><input type="checkbox" data-complete="urls"> 07 URLs</label>
+          <label><input type="checkbox" data-complete="try-it"> 08 CRUD</label>
+          <label><input type="checkbox" data-complete="cors"> 09 CORS</label>
+          <label><input type="checkbox" data-complete="troubleshooting"> 10 Review</label>
+        </div>
+      </details>
+    </aside>
+    <main id="content">
+      <p id="search-empty" class="search-empty" hidden>No sections match your search. Try a term such as “URLs” or “token.”</p>
+      <section id="map">
+        <p class="section-label">01 · Mental model</p>
+        <h2>What DRF adds to Django</h2>
+        <p>Django stores records in models and maps requests to views. Django REST Framework (DRF) adds tools to <strong>validate input, turn records into JSON, and build API views</strong> quickly.</p>
+        <div class="flow" aria-label="API request and response flow">
+          <span>HTTP request</span><span class="arrow" aria-hidden="true">→</span>
+          <span>URL router</span><span class="arrow" aria-hidden="true">→</span>
+          <span>ViewSet</span><span class="arrow" aria-hidden="true">→</span>
+          <span>Serializer</span><span class="arrow" aria-hidden="true">↔</span>
+          <span>Movie model</span>
+          <p>The response travels back as JSON. On writes, the serializer also checks the incoming data.</p>
+        </div>
+        <div class="tiles">
+          <div><strong>Model</strong><p>Defines the database fields for a movie.</p></div>
+          <div><strong>Serializer</strong><p>Chooses API fields and validates incoming values.</p></div>
+          <div><strong>ViewSet</strong><p>Handles list, detail, create, update, and delete actions.</p></div>
+          <div><strong>Router</strong><p>Generates matching URL patterns for the viewset.</p></div>
+        </div>
+        <aside class="note"><strong>The one-sentence version:</strong> a model describes the record, a serializer describes its API representation, a viewset handles the operations, and a router gives those operations URLs.</aside>
+      </section>
+
+      <section id="start">
+        <p class="section-label">02 · Project setup</p>
+        <h2>Create a Django project</h2>
+        <p>You need Python and a terminal. If you already have a Django project and a Movie model, keep them and adapt the field names in the next sections.</p>
+        <div data-file="terminal">
+          <p><code>Terminal</code> · run in a new folder</p>
+          <pre class="code-block" id="setup-commands"><code>python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install Django djangorestframework
+django-admin startproject config .
+python manage.py startapp movies</code></pre>
+        </div>
+        <p>On Windows, activate the environment with <code>.venv\Scripts\activate</code>. You can use <code>python</code> instead of <code>python3</code> if that is how Python is installed on your system.</p>
+        <h3>The files you will edit</h3>
+        <pre class="code-block" id="file-map"><code>config/
+└── settings.py       # apps and API policy
+└── urls.py           # project-level routes
+movies/
+├── models.py         # database record
+├── serializers.py    # JSON fields and validation (new file)
+├── views.py          # API behavior
+├── urls.py           # app-level routes (new file)
+└── admin.py          # optional admin registration</code></pre>
+      </section>
+
+      <section id="settings">
+        <p class="section-label">03 · Configuration</p>
+        <h2>Enable DRF and choose access rules</h2>
+        <p>Add these apps to the <em>existing</em> <code>INSTALLED_APPS</code> list in <code>config/settings.py</code>. Keep Django's generated entries.</p>
+        <div data-file="config/settings.py">
+          <p><code>config/settings.py</code> · add entries and the REST_FRAMEWORK setting</p>
+          <pre class="code-block" id="settings-code"><code># Add these entries to the existing INSTALLED_APPS list:
+"rest_framework",
+"rest_framework.authtoken",
+"movies",
+
+# Add this setting elsewhere in settings.py:
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+}</code></pre>
+        </div>
+        <p><code>IsAuthenticatedOrReadOnly</code> lets anyone read movies; only signed-in users can create, edit, or delete them. Token authentication is for API clients. Session authentication supports the browsable API after browser login.</p>
+        <aside class="note caution"><strong>Why these defaults?</strong> The source lesson uses <code>AllowAny</code>, which lets anonymous visitors change and delete data. This guide keeps reads public and requires authentication for writes. The token app needs a database migration, which you will run below.</aside>
+        <details class="knowledge-check"><summary>Check your mental model</summary><p><strong>Question:</strong> Does enabling token authentication automatically require a token for every request?</p><p><strong>Answer:</strong> No. Authentication identifies a user. The permission class decides which operations require that identity.</p></details>
+      </section>
+
+      <section id="model">
+        <p class="section-label">04 · Database</p>
+        <h2>Create the Movie model</h2>
+        <p>The model controls storage. This example keeps the fields from the Notion Movies tutorial and uses a poster URL, so no image-upload setup is needed.</p>
+        <div data-file="movies/models.py">
+          <p><code>movies/models.py</code></p>
+          <pre class="code-block" id="model-code"><code>from django.db import models
+
+
+class Movie(models.Model):
+    title = models.CharField(max_length=200)
+    genre = models.CharField(max_length=80)
+    release_date = models.DateField()
+    rating = models.PositiveSmallIntegerField()
+    poster = models.URLField(blank=True, default="")
+
+    def __str__(self):
+        return self.title</code></pre>
+        </div>
+        <p>Register the model if you want to add sample movies through <code>/admin/</code>:</p>
+        <div data-file="movies/admin.py">
+          <p><code>movies/admin.py</code> · optional</p>
+          <pre class="code-block" id="admin-code"><code>from django.contrib import admin
+from .models import Movie
+
+admin.site.register(Movie)</code></pre>
+        </div>
+        <aside class="note"><strong>Adapt it:</strong> if your project already has a model, skip this file and use your model name and field names in the serializer and viewset.</aside>
+      </section>
+
+      <section id="serializer">
+        <p class="section-label">05 · JSON and validation</p>
+        <h2>Create the serializer</h2>
+        <p>A serializer converts a <code>Movie</code> into data DRF can render as JSON. In the other direction, it checks and converts incoming JSON before a record is saved. <code>ModelSerializer</code> creates standard fields and create/update behavior from the model.</p>
+        <div data-file="movies/serializers.py">
+          <p><code>movies/serializers.py</code> · create this file</p>
+          <pre class="code-block" id="serializer-code"><code>from rest_framework import serializers
+from .models import Movie
+
+
+class MovieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ["id", "title", "genre", "release_date", "rating", "poster"]
+        read_only_fields = ["id"]
+
+    def validate_rating(self, value):
+        if value &gt; 10:
+            raise serializers.ValidationError("Rating must be between 0 and 10.")
+        return value</code></pre>
+        </div>
+        <p>The model's positive integer field rules out negative values; <code>validate_rating</code> sets the upper limit. DRF also checks date and URL formats. Listing fields explicitly prevents a future model field from silently appearing in the API.</p>
+        <div class="tiles">
+          <div><strong>Python → JSON</strong><p><code>MovieSerializer(movie).data</code> produces a dictionary DRF can render.</p></div>
+          <div><strong>JSON → Python</strong><p><code>is_valid()</code> checks values and reports field errors.</p></div>
+        </div>
+      </section>
+
+      <section id="viewset">
+        <p class="section-label">06 · API behavior</p>
+        <h2>Create the viewset</h2>
+        <p><code>ModelViewSet</code> supplies the standard CRUD actions. Tell it which records to query and which serializer to use.</p>
+        <div data-file="movies/views.py">
+          <p><code>movies/views.py</code></p>
+          <pre class="code-block" id="viewset-code"><code>from rest_framework import viewsets
+from .models import Movie
+from .serializers import MovieSerializer
+
+
+class MovieViewSet(viewsets.ModelViewSet):
+    queryset = Movie.objects.all().order_by("-id")
+    serializer_class = MovieSerializer</code></pre>
+        </div>
+        <p>The viewset inherits the authentication and permission rules from <code>REST_FRAMEWORK</code>. It provides <code>list</code>, <code>retrieve</code>, <code>create</code>, <code>update</code>, <code>partial_update</code>, and <code>destroy</code>.</p>
+      </section>
+
+      <section id="urls">
+        <p class="section-label">07 · Routing</p>
+        <h2>Connect the URLs</h2>
+        <p>A <code>DefaultRouter</code> turns the viewset's actions into collection and detail routes. The project URL file mounts them under <code>/api/</code>.</p>
+        <div data-file="movies/urls.py">
+          <p><code>movies/urls.py</code> · create this file</p>
+          <pre class="code-block" id="app-urls-code"><code>from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+from .views import MovieViewSet
+
+router = DefaultRouter()
+router.register("movies", MovieViewSet)
+
+urlpatterns = [
+    path("", include(router.urls)),
+]</code></pre>
+        </div>
+        <div data-file="config/urls.py">
+          <p><code>config/urls.py</code> · project URLs</p>
+          <pre class="code-block" id="project-urls-code"><code>from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/", include("movies.urls")),
+    path("api-auth/", include("rest_framework.urls")),
+]</code></pre>
+        </div>
+        <div class="table-scroll">
+          <table class="endpoint-table">
+            <thead><tr><th>Method</th><th>URL</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><code>GET</code></td><td><code>/api/movies/</code></td><td>List movies</td></tr>
+              <tr><td><code>POST</code></td><td><code>/api/movies/</code></td><td>Create a movie</td></tr>
+              <tr><td><code>GET</code></td><td><code>/api/movies/1/</code></td><td>Read movie 1</td></tr>
+              <tr><td><code>PUT</code> / <code>PATCH</code></td><td><code>/api/movies/1/</code></td><td>Replace / partly update movie 1</td></tr>
+              <tr><td><code>DELETE</code></td><td><code>/api/movies/1/</code></td><td>Delete movie 1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <aside class="note"><strong>Keep the final slash.</strong> DRF's router creates URLs such as <code>/api/movies/</code> by default. <code>/api/</code> is also a browsable API index.</aside>
+      </section>
+
+      <section id="try-it">
+        <p class="section-label">08 · Run and verify</p>
+        <h2>Try the Movies API</h2>
+        <p>First make the database tables, create a user, create that user's API token, and start Django. Replace <code>YOUR_USERNAME</code> with the username you chose.</p>
+        <div data-file="terminal">
+          <p><code>Terminal</code> · run from the project folder</p>
+          <pre class="code-block" id="run-commands"><code>python manage.py makemigrations movies
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py drf_create_token YOUR_USERNAME
+python manage.py runserver</code></pre>
+        </div>
+        <p>Open <a href="http://127.0.0.1:8000/api/movies/">http://127.0.0.1:8000/api/movies/</a> for the browsable API. An empty list is a valid first result. Sign in at <a href="http://127.0.0.1:8000/api-auth/login/">/api-auth/login/</a> to use the HTML create form, or visit <a href="http://127.0.0.1:8000/admin/">/admin/</a> to add a record.</p>
+        <h3>Use an API client or curl</h3>
+        <p>Paste the generated token in place of <code>PASTE_TOKEN_HERE</code>. Run one command at a time; replace <code>1</code> with the ID returned by your create request.</p>
+        <div data-file="terminal">
+          <p><code>Terminal</code> · example requests</p>
+          <pre class="code-block" id="curl-commands"><code># Read the collection: no token needed.
+curl http://127.0.0.1:8000/api/movies/
+
+# Create a movie.
+curl -X POST http://127.0.0.1:8000/api/movies/ \
+  -H "Authorization: Token PASTE_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Moonlight","genre":"Drama","release_date":"2016-10-21","rating":9,"poster":"https://example.com/poster.jpg"}'
+
+# Change one field on movie 1.
+curl -X PATCH http://127.0.0.1:8000/api/movies/1/ \
+  -H "Authorization: Token PASTE_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{"rating":10}'
+
+# Delete movie 1.
+curl -X DELETE http://127.0.0.1:8000/api/movies/1/ \
+  -H "Authorization: Token PASTE_TOKEN_HERE"</code></pre>
+        </div>
+        <p>A successful create returns <code>201 Created</code> and the movie JSON. List and detail requests return <code>200 OK</code>; delete returns <code>204 No Content</code>. A <code>400</code> response usually identifies a field that failed validation.</p>
+        <details class="knowledge-check"><summary>Quick exercise: prove validation works</summary><p>Send a movie with <code>rating: 11</code>. The API should return <code>400 Bad Request</code> and the serializer's rating message. Then send <code>rating: 8</code> and observe a successful create.</p></details>
+      </section>
+
+      <section id="cors">
+        <p class="section-label">09 · Optional browser configuration</p>
+        <h2>Add CORS only for a separate frontend</h2>
+        <p>If a browser frontend runs at a different origin—for example, React at <code>http://localhost:5173</code>—the browser needs CORS response headers. You do not need CORS for <code>curl</code>, a same-origin Django page, or the browsable API.</p>
+        <div data-file="terminal">
+          <p><code>Terminal</code> · optional dependency</p>
+          <pre class="code-block" id="cors-install"><code>python -m pip install django-cors-headers</code></pre>
+        </div>
+        <div data-file="config/settings.py">
+          <p><code>config/settings.py</code> · add to the existing lists</p>
+          <pre class="code-block" id="cors-settings"><code># Add "corsheaders" to INSTALLED_APPS.
+
+# Insert CorsMiddleware above CommonMiddleware in MIDDLEWARE.
+# In a new Django project, this is the full default list:
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]</code></pre>
+        </div>
+        <aside class="note caution"><strong>Do not open every origin by habit.</strong> The source notes use the older <code>CORS_ORIGIN_ALLOW_ALL</code> name. The current setting is <code>CORS_ALLOW_ALL_ORIGINS</code>, but a short <code>CORS_ALLOWED_ORIGINS</code> list is safer. CORS controls browser access; it does not replace API authentication or permissions. Cookie-based cross-origin writes also need separate CSRF configuration.</aside>
+      </section>
+
+      <section id="troubleshooting">
+        <p class="section-label">10 · Keep going</p>
+        <h2>Common errors and next steps</h2>
+        <div class="tiles">
+          <div><strong>404 at /api/movies/</strong><p>Check both <code>urls.py</code> files, the router registration, and the final slash.</p></div>
+          <div><strong>401 on POST or PATCH</strong><p>Provide <code>Authorization: Token …</code> or log into the browsable API.</p></div>
+          <div><strong>400 on POST</strong><p>Read the JSON error response; check required fields, the date format, URL, and rating range.</p></div>
+          <div><strong>“no such table”</strong><p>Run <code>makemigrations movies</code> and <code>migrate</code> from the correct project.</p></div>
+          <div><strong>Browser CORS error</strong><p>Confirm the exact frontend origin and that <code>CorsMiddleware</code> is above <code>CommonMiddleware</code>.</p></div>
+          <div><strong>403 with browser login</strong><p>Session-authenticated unsafe requests need Django's CSRF token; use the browsable form or configure your frontend's CSRF flow.</p></div>
+        </div>
+        <h3>What to remember</h3>
+        <ol>
+          <li><strong>Model:</strong> what is stored?</li>
+          <li><strong>Serializer:</strong> what enters and leaves the API, and is it valid?</li>
+          <li><strong>ViewSet:</strong> which records and actions are available?</li>
+          <li><strong>Router and URLs:</strong> where do clients send requests?</li>
+          <li><strong>Authentication and permissions:</strong> who may use each action?</li>
+        </ol>
+        <h3>Sources and further reading</h3>
+        <ul>
+          <li><a href="https://app.notion.com/p/1ccc1720b8378045be3fe5b5f1130c45">Dr. Sergio Inzunza's Django Rest Framework lesson</a> — source for the Movies example.</li>
+          <li><a href="https://www.django-rest-framework.org/tutorial/quickstart/">DRF quickstart</a> and <a href="https://www.django-rest-framework.org/api-guide/serializers/">serializers</a>.</li>
+          <li><a href="https://www.django-rest-framework.org/api-guide/viewsets/">Viewsets</a>, <a href="https://www.django-rest-framework.org/api-guide/routers/">routers</a>, <a href="https://www.django-rest-framework.org/api-guide/authentication/">authentication</a>, and <a href="https://www.django-rest-framework.org/api-guide/permissions/">permissions</a>.</li>
+          <li><a href="https://pypi.org/project/django-cors-headers/">django-cors-headers setup and settings</a>.</li>
+        </ul>
+        <aside class="note"><strong>Next practice step:</strong> add a second model, such as <code>Review</code>, then repeat the serializer → viewset → router pattern. Decide whether reviews should be public or tied to the signed-in user before exposing writes.</aside>
+      </section>
+    </main>
+  </div>
+  <footer><strong>SDGKU · FSDI</strong> · Django REST Framework Movies API Guide</footer>
+  <p id="interaction-status" role="status" aria-live="polite"></p>
+  <script>
+    (() => {
+      const THEME_KEY = 'drf-guide-theme';
+      const PROGRESS_KEY = 'drf-guide-progress';
+      const status = document.querySelector('#interaction-status');
+      const themeButton = document.querySelector('#theme-toggle');
+      const searchInput = document.querySelector('#guide-search');
+      const guideMenu = document.querySelector('#guide-menu');
+      const progressBar = document.querySelector('#progress-bar');
+      const progressOutput = document.querySelector('#progress-output');
+      const completionBoxes = [...document.querySelectorAll('[data-complete]')];
+
+      function storageGet(key) {
+        try { return localStorage.getItem(key); } catch { return null; }
+      }
+      function storageSet(key, value) {
+        try { localStorage.setItem(key, value); } catch { /* Storage may be unavailable. */ }
+      }
+      function announce(message) {
+        status.textContent = message;
+        window.clearTimeout(announce.timer);
+        announce.timer = window.setTimeout(() => { status.textContent = ''; }, 2400);
+      }
+      function applyTheme(theme) {
+        const next = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = next;
+        themeButton.setAttribute('aria-pressed', String(next === 'dark'));
+        themeButton.setAttribute('aria-label', next === 'dark' ? 'Use light theme' : 'Use dark theme');
+        storageSet(THEME_KEY, next);
+      }
+      function updateProgress() {
+        const completed = completionBoxes.filter((box) => box.checked);
+        const percent = Math.round((completed.length / completionBoxes.length) * 100);
+        progressBar.value = percent;
+        progressBar.textContent = `${percent}%`;
+        progressOutput.value = `${percent}%`;
+        progressOutput.textContent = `${percent}%`;
+        storageSet(PROGRESS_KEY, JSON.stringify(completed.map((box) => box.dataset.complete)));
+      }
+      async function copyCode(button) {
+        const target = document.getElementById(button.dataset.copy);
+        if (!target) return;
+        const code = target.textContent;
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(code);
+          } else {
+            const helper = document.createElement('textarea');
+            helper.value = code;
+            helper.setAttribute('readonly', '');
+            helper.style.position = 'fixed';
+            helper.style.opacity = '0';
+            document.body.appendChild(helper);
+            helper.select();
+            const copied = document.execCommand('copy');
+            helper.remove();
+            if (!copied) throw new Error('Clipboard unavailable');
+          }
+          button.textContent = 'Copied ✓';
+          announce('Code copied to the clipboard');
+          window.setTimeout(() => { button.textContent = 'Copy'; }, 1600);
+        } catch {
+          announce('Could not copy automatically; select the block manually.');
+        }
+      }
+      function filterGuide(query) {
+        const needle = query.trim().toLocaleLowerCase('en');
+        let visible = 0;
+        document.querySelectorAll('main > section').forEach((section) => {
+          const matches = !needle || section.textContent.toLocaleLowerCase('en').includes(needle);
+          section.hidden = !matches;
+          const link = document.querySelector(`nav a[href="#${section.id}"]`);
+          if (link) link.hidden = !matches;
+          if (matches) visible += 1;
+        });
+        document.querySelector('#search-empty').hidden = visible !== 0;
+      }
+
+      applyTheme(storageGet(THEME_KEY) || 'light');
+      if (window.matchMedia?.('(max-width: 880px)').matches) guideMenu.removeAttribute('open');
+      let savedProgress = [];
+      try {
+        const parsed = JSON.parse(storageGet(PROGRESS_KEY) || '[]');
+        savedProgress = Array.isArray(parsed) ? parsed : [];
+      } catch { savedProgress = []; }
+      completionBoxes.forEach((box) => {
+        box.checked = savedProgress.includes(box.dataset.complete);
+        box.addEventListener('change', () => {
+          updateProgress();
+          announce(box.checked ? 'Section marked complete' : 'Section marked incomplete');
+        });
+      });
+      updateProgress();
+      themeButton.addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
+      searchInput.addEventListener('input', (event) => filterGuide(event.target.value));
+      document.querySelectorAll('pre.code-block[id]').forEach((block) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'copy-button';
+        button.dataset.copy = block.id;
+        button.textContent = 'Copy';
+        button.setAttribute('aria-label', `Copy block ${block.id}`);
+        button.addEventListener('click', () => copyCode(button));
+        block.insertAdjacentElement('beforebegin', button);
+      });
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          const current = entries.filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!current) return;
+          document.querySelectorAll('nav a[aria-current]').forEach((link) => link.removeAttribute('aria-current'));
+          document.querySelector(`nav a[href="#${current.target.id}"]`)?.setAttribute('aria-current', 'location');
+        }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, .25, .6] });
+        document.querySelectorAll('main > section').forEach((section) => observer.observe(section));
+      }
+    })();
+  </script>
+</body>
+</html>
