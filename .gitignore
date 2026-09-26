@@ -1,2 +1,5 @@
 .DS_Store
 **/.DS_Store
+
+# Local presentation build workspace; never publish it with GitHub Pages.
+.capstone-deck-build/
